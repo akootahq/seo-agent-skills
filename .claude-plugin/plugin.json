@@ -1,7 +1,7 @@
 {
   "name": "seo-agent-skills",
   "displayName": "SEO Agent Skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "SEO and AI search (AEO/GEO) audits that end in a pull request, with each fix checked on the live site. Connect Agent Number 10 to see what ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews say about you, before and after.",
   "author": {
     "name": "Agent Number 10",
@@ -11,20 +11,21 @@
   "repository": "https://github.com/akootahq/seo-agent-skills",
   "license": "MIT",
   "privacyPolicyUrl": "https://agentnumber10.com/privacy",
-  "keywords": ["seo", "seo-audit", "aeo", "geo", "ai-visibility", "ai-search", "technical-seo", "agent-skills"],
+  "keywords": [
+    "seo",
+    "seo-audit",
+    "aeo",
+    "geo",
+    "ai-visibility",
+    "ai-search",
+    "technical-seo",
+    "agent-skills"
+  ],
   "skills": "./skills",
-  "userConfig": {
-    "app_url": {
-      "type": "string",
-      "title": "Agent Number 10 address",
-      "description": "Only the AI answer skills use it. https://app.agentnumber10.com for the hosted service, or your own install's address, with no path.",
-      "default": "https://app.agentnumber10.com"
-    }
-  },
   "mcpServers": {
     "agentnumber10": {
       "type": "http",
-      "url": "${user_config.app_url}/mcp"
+      "url": "https://app.agentnumber10.com/mcp"
     }
   }
 }
