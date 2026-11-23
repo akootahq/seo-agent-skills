@@ -137,7 +137,24 @@ Many audits stop at a list of problems. These skills keep going:
   `prove-fix` compares readings from before a fix went live with readings
   after it, and says plainly when the difference is within the usual range.
 
-## How it compares
+## Compared with other SEO skills
+
+| | SEO Agent Skills | claude-seo | OpenSEO | GEO Optimizer | Ryze SEO MCP skills | marketingskills | Illyism seo-skills | geo-seo-claude |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| SEO audit | ✅ | ✅ 29 skills | ✅ site audit | AI readiness only | ✅ on your Search Console and GA4 data | ✅ | ✅ | GEO-first, SEO supported |
+| AI search (AEO/GEO) audit | ✅ | ✅ | ✅ from its AI answer data | ✅ 0 to 100 score | ✅ | ✅ | ✅ | ✅ |
+| Makes the fix | ✅ a pull request in your code | Drafts fixes (schema, robots.txt, llms.txt) for you to apply; never edits the site | A report of changes to make | ✅ writes files (robots.txt, llms.txt, schema) | Not listed | Not listed | ✅ pull requests and diffs | Generates llms.txt; the rest as reports |
+| Checks the fix on the live site | ✅ pass or fail for each fix, with evidence | Compares the live page with a saved baseline | Not listed | Re-audits, with history and drift | Not listed | Not listed | Not listed | Not listed |
+| Real answers from AI engines | ✅ 5 engines, no API keys of your own | Through extensions, with your own paid accounts | ✅ hosted, or with your own data key | ✅ with your own API keys | Not listed (AI referral traffic from GA4) | Through partner tools, with their accounts | With your own data key | ❌ scores how quotable pages are |
+| AI answers before and after a fix | ✅ | ❌ its baseline covers page SEO | Trend over time | ✅ with your own API keys | ❌ | Not listed | ❌ | ❌ |
+| Runs in | Claude Code, Codex, Cursor and other SKILL.md agents | Claude Code (plugin); other agents through its AGENTS.md | Its own app, plus MCP and agent plugins | Command line, MCP, web | Claude, through a plugin and MCP | Claude Code, Codex and agents via the skills CLI | Claude Code, Cursor, Codex and more | Claude Code |
+| Install | Markdown only | Python and an install script | Docker, or the hosted app | Python (uvx) | Plugin and a Ryze account | Markdown only | Markdown only | Python and an install script |
+| Price | Free (MIT); AI answers need an Agent Number 10 account | Free (MIT) | Free (MIT) self-hosted; hosted from $10 a month | Free (MIT); hosted version GeoReady | Free (MIT) | Free (MIT) | Free | Free (MIT) |
+
+Read from each project's own repository (README, docs and code) on 23 November
+2026. If something here is out of date or wrong, open an issue and it gets corrected.
+
+## Compared with doing it another way
 
 | | By hand | An agency | SEO software | These skills |
 | --- | --- | --- | --- | --- |
