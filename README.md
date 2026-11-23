@@ -100,6 +100,20 @@ assistant came out as "unknown" rather than "ready", because the site sits
 behind Cloudflare, whose bot rules cannot be checked from outside, and the
 report said so instead of guessing.
 
+## AI visibility: see where you stand
+
+![AI visibility, a real run of the ai-visibility skill](assets/readme/ai-visibility-run.png)
+
+`ai-visibility` measures what ChatGPT, Perplexity, Gemini and Google AI Overviews actually answer about a site: the share that cite or name you, and who they name instead.
+
+**A real run.** We pointed it at *"best tool for meeting notes, 2026"* (ChatGPT, web search, US, 3 runs). ChatGPT cited **Fathom, Granola and Fireflies every run.** Notion, which ships a meeting-notes product, showed up in **1 of 3 runs**, and only via a **blog about Notion**; `notion.com` was cited **0 times**.
+
+ChatGPT pulls from other people's pages, not Notion's. **AI visibility is won off-site.**
+
+```sh
+/ai-visibility  yoursite.com
+```
+
 ## The skills
 
 | Skill | What it does | Needs |
