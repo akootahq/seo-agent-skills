@@ -1,7 +1,7 @@
 /**
  * Checks the collection before it ships. No dependencies: `node scripts/validate.mjs`.
  *
- * - Every skills/<name>/SKILL.md has front matter with a `name` equal to its
+ * - Every plugins/seo-agent-skills/skills/<name>/SKILL.md has front matter with a `name` equal to its
  *   folder (lowercase words joined by hyphens, at most 64 characters) and a
  *   `description` of at most 1,024 characters, as the Agent Skills format
  *   requires.
@@ -42,7 +42,8 @@ function frontMatter(text) {
 }
 
 // Skills.
-const skillsDir = join(root, "skills");
+const pluginDir = join(root, "plugins/seo-agent-skills");
+const skillsDir = join(pluginDir, "skills");
 const skills = readdirSync(skillsDir).filter((d) => statSync(join(skillsDir, d)).isDirectory());
 for (const skill of skills) {
   const file = join(skillsDir, skill, "SKILL.md");
@@ -80,10 +81,10 @@ for (const file of markdownFiles(root)) {
 }
 
 // Manifests.
-const plugin = JSON.parse(readFileSync(join(root, ".claude-plugin/plugin.json"), "utf8"));
+const plugin = JSON.parse(readFileSync(join(pluginDir, ".claude-plugin/plugin.json"), "utf8"));
 const market = JSON.parse(readFileSync(join(root, ".claude-plugin/marketplace.json"), "utf8"));
 if (plugin.version !== market.metadata?.version) {
-  fail(join(root, ".claude-plugin"), `plugin ${plugin.version} and marketplace ${market.metadata?.version} versions differ`);
+  fail(join(pluginDir, ".claude-plugin"), `plugin ${plugin.version} and marketplace ${market.metadata?.version} versions differ`);
 }
 const listed = market.plugins?.[0]?.description ?? "";
 if (!listed.startsWith(`${skills.length} skills`)) {
@@ -94,7 +95,7 @@ if (!listed.startsWith(`${skills.length} skills`)) {
 const changelog = join(root, "CHANGELOG.md");
 const entry = new RegExp(`^## ${plugin.version.replace(/\./g, "\\.")}( |$)`, "m");
 if (!existsSync(changelog) || !entry.test(readFileSync(changelog, "utf8"))) {
-  fail(changelog, `has no "## ${plugin.version}" entry for the version in .claude-plugin/plugin.json`);
+  fail(changelog, `has no "## ${plugin.version}" entry for the version in the plugin's plugin.json`);
 }
 
 // Licence.

@@ -67,7 +67,8 @@ claude plugin marketplace add akootahq/seo-agent-skills
 claude plugin install seo-agent-skills@seo-agent-skills
 ```
 
-Or copy the folders in `skills/` into your agent's skills folder.
+Or copy the folders in `plugins/seo-agent-skills/skills/` into your agent's
+skills folder.
 
 ## A real run
 

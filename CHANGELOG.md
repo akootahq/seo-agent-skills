@@ -4,6 +4,14 @@ Each entry says what changed for the people using the skills. Versions follow
 semantic versioning; the skills stay at `0.x` while their files and outputs
 settle.
 
+## 0.1.2 (23 November 2026)
+
+- The plugin moved to `plugins/seo-agent-skills/`, with its own README that
+  lists everything it runs, sends and fetches. The repository's own checks
+  stay outside it, as the Claude plugin directory asks. The install commands
+  are the same, and `skills.sh.json` tells the skills CLI where the skills
+  are.
+
 ## 0.1.1 (23 November 2026)
 
 - The Claude Code plugin connects to Agent Number 10 at
