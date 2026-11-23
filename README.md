@@ -139,17 +139,17 @@ Many audits stop at a list of problems. These skills keep going:
 
 ## Compared with other SEO skills
 
-| | SEO Agent Skills | claude-seo | OpenSEO | marketingskills | Illyism seo-skills | geo-seo-claude |
-| --- | --- | --- | --- | --- | --- | --- |
-| SEO audit | ✅ | ✅ 29 skills | ✅ site audit | Guidance | ✅ | GEO-first, SEO supported |
-| AI search (AEO/GEO) audit | ✅ | ✅ | Not listed | Guidance | ✅ | ✅ |
-| Makes the fix in your code | ✅ pull request | ❌ action plan | ❌ reports and data | ❌ | ✅ pull requests and diffs | ❌ reports and PDFs |
-| Checks each fix on the live site | ✅ pass or fail, with evidence | Each fix says how to check it | Not listed | Not listed | Not listed | Not listed |
-| Real answers from AI engines | ✅ 5 engines, with an Agent Number 10 account | Through paid extensions | ✅ hosted, or with your own data key | ❌ | With your own data key | ❌ scores how quotable pages are |
-| AI answers before and after a fix | ✅ with an Agent Number 10 account | ❌ | Trend over time | ❌ | ❌ | ❌ |
-| Runs in | Claude Code, Codex, Cursor and other SKILL.md agents | Claude Code | Its own app, plus MCP for agents | Claude Code, Codex and agents via the skills CLI | Claude Code, Cursor, Codex and more | Claude Code |
-| Install | Markdown only | Python and an install script | Docker, or the hosted app | Markdown only | Markdown only | Python and an install script |
-| Price | Free (MIT); AI answers need an account | Free (MIT) | Free self-hosted; hosted from $10 a month | Free (MIT) | Free | Free (MIT) |
+| | SEO Agent Skills | claude-seo | OpenSEO | GEO Optimizer | Ryze SEO MCP skills | marketingskills | Illyism seo-skills | geo-seo-claude |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| SEO audit | ✅ | ✅ 29 skills | ✅ site audit | AI readiness only | ✅ on your Search Console and GA4 data | Guidance | ✅ | GEO-first, SEO supported |
+| AI search (AEO/GEO) audit | ✅ | ✅ | Not listed | ✅ 0 to 100 score | ✅ | Guidance | ✅ | ✅ |
+| Makes the fix | ✅ a pull request in your code | ❌ an action plan | ❌ | ✅ writes files (robots.txt, llms.txt, schema) | Not listed | ❌ | ✅ pull requests and diffs | ❌ reports |
+| Checks the fix on the live site | ✅ pass or fail for each fix, with evidence | Compares the live page with a saved baseline | Not listed | Re-audits, with history and drift | Not listed | Not listed | Not listed | Not listed |
+| Real answers from AI engines | ✅ 5 engines, no API keys of your own | Through extensions, with your own paid accounts | ✅ hosted, or with your own data key | ✅ with your own API keys | ❌ AI referral traffic from GA4 | ❌ | With your own data key | ❌ scores how quotable pages are |
+| AI answers before and after a fix | ✅ | ❌ its baseline covers page SEO | Trend over time | ✅ with your own API keys | ❌ | ❌ | ❌ | ❌ |
+| Runs in | Claude Code, Codex, Cursor and other SKILL.md agents | Claude Code | Its own app, plus MCP | Command line, MCP, web | Claude Code | Claude Code, Codex and agents via the skills CLI | Claude Code, Cursor, Codex and more | Claude Code |
+| Install | Markdown only | Python and an install script | Docker, or the hosted app | Python (uvx) | Plugin and a Ryze account | Markdown only | Markdown only | Python and an install script |
+| Price | Free (MIT); AI answers need an Agent Number 10 account | Free (MIT) | Free self-hosted; hosted from $10 a month | Free (MIT); hosted version GeoReady | Free | Free (MIT) | Free | Free (MIT) |
 
 Read from each project's own README on 23 November 2026. If something here
 is out of date or wrong, open an issue and it gets corrected.
