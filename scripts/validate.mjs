@@ -10,6 +10,8 @@
  * - Text uses straight quotes and no long dashes.
  * - The plugin and marketplace manifests parse and agree on the version, and
  *   the marketplace description gives the right number of skills.
+ * - CHANGELOG.md has an entry for that version, which the release uses as
+ *   its notes.
  * - The licence names its holder.
  */
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
@@ -86,6 +88,13 @@ if (plugin.version !== market.metadata?.version) {
 const listed = market.plugins?.[0]?.description ?? "";
 if (!listed.startsWith(`${skills.length} skills`)) {
   fail(join(root, ".claude-plugin/marketplace.json"), `the plugin description should start with "${skills.length} skills"`);
+}
+
+// Changelog: the release workflow publishes this version's entry as its notes.
+const changelog = join(root, "CHANGELOG.md");
+const entry = new RegExp(`^## ${plugin.version.replace(/\./g, "\\.")}( |$)`, "m");
+if (!existsSync(changelog) || !entry.test(readFileSync(changelog, "utf8"))) {
+  fail(changelog, `has no "## ${plugin.version}" entry for the version in .claude-plugin/plugin.json`);
 }
 
 // Licence.
