@@ -139,29 +139,29 @@ Many audits stop at a list of problems. These skills keep going:
 
 ## How it compares
 
-| | Audit skills (claude-seo, geo-seo-claude, marketingskills) | Data apps (OpenSEO, GEO Optimizer) | SEO Agent Skills |
+|  | **SEO Agent Skills** | Audit skills (claude-seo, geo-seo-claude, marketingskills) | Data apps (OpenSEO, GEO Optimizer) |
 | --- | --- | --- | --- |
-| Finds what to fix | ✅ | ✅ | ✅ |
-| Makes the fix | Plans or drafts; you apply them | Reports; GEO Optimizer can write files | ✅ a pull request in your code |
-| Checks each fix on the live site | Not built in; claude-seo compares baselines | GEO Optimizer re-audits with history | ✅ pass or fail, with evidence |
-| Real answers from AI engines | Only through paid add-ons, if at all | With your own API keys, or a hosted plan | ✅ 5 engines, no keys of your own |
-| AI answers before and after a fix | ❌ | History or trends, with your keys or plan | ✅ |
-| Install | Markdown, or Python and a script | An app, or a Python CLI | Markdown only |
+| Finds what to fix | **✅** | ✅ | ✅ |
+| Makes the fix | **✅ a pull request in your code** | Plans or drafts; you apply them | Reports; GEO Optimizer can write files |
+| Checks each fix on the live site | **✅ pass or fail, with evidence** | Not built in; claude-seo compares baselines | GEO Optimizer re-audits with history |
+| Real answers from AI engines | **✅ 5 engines, no keys of your own** | Only through paid add-ons, if at all | With your own API keys, or a hosted plan |
+| AI answers before and after a fix | **✅** | ❌ | History or trends, with your keys or plan |
+| Install | **Markdown only** | Markdown, or Python and a script | An app, or a Python CLI |
 
 <details>
 <summary><b>Full comparison: 8 projects, feature by feature</b></summary>
 
-| | SEO Agent Skills | claude-seo | OpenSEO | GEO Optimizer | Ryze SEO MCP skills | marketingskills | Illyism seo-skills | geo-seo-claude |
+|  | **SEO Agent Skills** | claude-seo | OpenSEO | GEO Optimizer | Ryze SEO MCP skills | marketingskills | Illyism seo-skills | geo-seo-claude |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| SEO audit | ✅ | ✅ 29 skills | ✅ site audit | AI readiness only | ✅ on your Search Console and GA4 data | ✅ | ✅ | GEO-first, SEO supported |
-| AI search (AEO/GEO) audit | ✅ | ✅ | ✅ from its AI answer data | ✅ 0 to 100 score | ✅ | ✅ | ✅ | ✅ |
-| Makes the fix | ✅ a pull request in your code | Drafts fixes (schema, robots.txt, llms.txt) for you to apply; never edits the site | A report of changes to make | ✅ writes files (robots.txt, llms.txt, schema) | Not listed | Not listed | ✅ pull requests and diffs | Generates llms.txt; the rest as reports |
-| Checks the fix on the live site | ✅ pass or fail for each fix, with evidence | Compares the live page with a saved baseline | Not listed | Re-audits, with history and drift | Not listed | Not listed | Verification commands in the pull request | Not listed |
-| Real answers from AI engines | ✅ 5 engines, no API keys of your own | Through extensions, with your own paid accounts | ✅ hosted, or with your own data key | ✅ with your own API keys | Not listed (AI referral traffic from GA4) | Through partner tools, with their accounts | With your own data key | ❌ scores how quotable pages are |
-| AI answers before and after a fix | ✅ | ❌ its baseline covers page SEO | Trend over time | ✅ with your own API keys | ❌ | Not listed | Through a separate paid tracker | ❌ |
-| Runs in | Claude Code, Codex, Cursor and other SKILL.md agents | Claude Code (plugin); other agents through its AGENTS.md | Its own app, plus MCP and agent plugins | Command line, MCP, web | Claude, through a plugin and MCP | Claude Code, Codex and agents via the skills CLI | Claude Code, Cursor, Codex and more | Claude Code |
-| Install | Markdown only | Python and an install script | Docker, or the hosted app | Python (uvx) | Plugin and a Ryze account | Markdown only | Markdown only | Python and an install script |
-| Price | Free (MIT); AI answers need an Agent Number 10 account | Free (MIT) | Free (MIT) self-hosted; hosted from $10 a month | Free (MIT); hosted version GeoReady | Free (MIT) | Free (MIT) | Free | Free (MIT) |
+| SEO audit | **✅** | ✅ 29 skills | ✅ site audit | AI readiness only | ✅ on your Search Console and GA4 data | ✅ | ✅ | GEO-first, SEO supported |
+| AI search (AEO/GEO) audit | **✅** | ✅ | ✅ from its AI answer data | ✅ 0 to 100 score | ✅ | ✅ | ✅ | ✅ |
+| Makes the fix | **✅ a pull request in your code** | Drafts fixes (schema, robots.txt, llms.txt) for you to apply; never edits the site | A report of changes to make | ✅ writes files (robots.txt, llms.txt, schema) | Not listed | Not listed | ✅ pull requests and diffs | Generates llms.txt; the rest as reports |
+| Checks the fix on the live site | **✅ pass or fail for each fix, with evidence** | Compares the live page with a saved baseline | Not listed | Re-audits, with history and drift | Not listed | Not listed | Verification commands in the pull request | Not listed |
+| Real answers from AI engines | **✅ 5 engines, no API keys of your own** | Through extensions, with your own paid accounts | ✅ hosted, or with your own data key | ✅ with your own API keys | Not listed (AI referral traffic from GA4) | Through partner tools, with their accounts | With your own data key | ❌ scores how quotable pages are |
+| AI answers before and after a fix | **✅** | ❌ its baseline covers page SEO | Trend over time | ✅ with your own API keys | ❌ | Not listed | Through a separate paid tracker | ❌ |
+| Runs in | **Claude Code, Codex, Cursor and other SKILL.md agents** | Claude Code (plugin); other agents through its AGENTS.md | Its own app, plus MCP and agent plugins | Command line, MCP, web | Claude, through a plugin and MCP | Claude Code, Codex and agents via the skills CLI | Claude Code, Cursor, Codex and more | Claude Code |
+| Install | **Markdown only** | Python and an install script | Docker, or the hosted app | Python (uvx) | Plugin and a Ryze account | Markdown only | Markdown only | Python and an install script |
+| Price | **Free (MIT); AI answers need an Agent Number 10 account** | Free (MIT) | Free (MIT) self-hosted; hosted from $10 a month | Free (MIT); hosted version GeoReady | Free (MIT) | Free (MIT) | Free | Free (MIT) |
 
 Read from each project's own repository (README, docs and code) on 23 November
 2026. If something here is out of date or wrong, open an issue and it gets corrected.
@@ -170,14 +170,14 @@ Read from each project's own repository (README, docs and code) on 23 November
 
 ## Compared with doing it another way
 
-| | By hand | An agency | SEO software | These skills |
+|  | **These skills** | By hand | An agency | SEO software |
 | --- | --- | --- | --- | --- |
-| Audit | Hours per site | Weeks | Minutes, as a dashboard | Minutes, as a fix list in your repo |
-| Fixes | You make them | They make them, billed | You make them | Made in your code, as a pull request you review |
-| Checking a fix is live | By hand | Depends on the agency | Depends on the tool | A pass check for each fix, run on the live site |
-| What AI assistants answer about you | Ask them one by one | Depends on the agency | Some tools, on paid plans | Real answers from 5 engines, with Agent Number 10 |
-| Before and after a fix | By hand | In a report | Some tools track over time | Readings split at the date each fix went live |
-| Cost | Your time | A retainer | A monthly plan | Free; AI answers need an Agent Number 10 account |
+| Audit | **Minutes, as a fix list in your repo** | Hours per site | Weeks | Minutes, as a dashboard |
+| Fixes | **Made in your code, as a pull request you review** | You make them | They make them, billed | You make them |
+| Checking a fix is live | **A pass check for each fix, run on the live site** | By hand | Depends on the agency | Depends on the tool |
+| What AI assistants answer about you | **Real answers from 5 engines, with Agent Number 10** | Ask them one by one | Depends on the agency | Some tools, on paid plans |
+| Before and after a fix | **Readings split at the date each fix went live** | By hand | In a report | Some tools track over time |
+| Cost | **Free; AI answers need an Agent Number 10 account** | Your time | A retainer | A monthly plan |
 
 ## Your data
 
