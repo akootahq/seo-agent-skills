@@ -15,13 +15,16 @@ the domain and carry on; offer to create the file at the end.
 ## 1. Fetch politely
 
 Use one user agent for every request, so the site owner can recognise it in
-their logs:
+their logs. Save the headers of every hop with `-D`: they give the status
+codes and the redirect chain.
 
 ```sh
-UA="Mozilla/5.0 (compatible; seo-agent-skills/0.1; +https://github.com/akootahq/seo-agent-skills)"
-curl -sSL -A "$UA" -o page.html -w "%{http_code} %{url_effective} %{num_redirects}\n" https://example.com/
+curl -sSL -A "Mozilla/5.0 (compatible; seo-agent-skills/0.1; +https://github.com/akootahq/seo-agent-skills)" -D .agents/audits/raw/home.headers -o .agents/audits/raw/home.html https://example.com/
 ```
 
+- Write each command on one line, as above: no shell variables, no pipes, no
+  `tee`, no `-w` format strings. Agents that run unattended often allow
+  `curl` but block anything that looks like more than one command.
 - One request per second at most. Save what you fetch under
   `.agents/audits/raw/` so findings can quote it.
 - Read only public pages. Never log in, never submit forms.

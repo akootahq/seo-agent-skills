@@ -19,10 +19,13 @@ Take the findings to verify from, in order of preference:
 ## 2. Fetch what is live, not what is cached
 
 ```sh
-UA="Mozilla/5.0 (compatible; seo-agent-skills/0.1; +https://github.com/akootahq/seo-agent-skills)"
-curl -sSL -A "$UA" -H "Cache-Control: no-cache" -H "Pragma: no-cache" -o live.html -D live.headers https://example.com/pricing
+curl -sSL -A "Mozilla/5.0 (compatible; seo-agent-skills/0.1; +https://github.com/akootahq/seo-agent-skills)" -H "Cache-Control: no-cache" -H "Pragma: no-cache" -D .agents/audits/raw/verify-pricing.headers -o .agents/audits/raw/verify-pricing.html https://example.com/pricing
 ```
 
+- One command per line, as above: no shell variables, pipes, `tee` or `-w`
+  format strings, so agents that run unattended can allow it.
+- With `-L`, the headers file holds every hop, so it shows the redirect
+  chain and each status code.
 - Do not add query strings to bust a cache: they change the URL being tested.
 - If the response headers show a cache hit with an age older than the deploy
   (`age`, `x-cache`, `cf-cache-status: HIT`), say the result may be stale and
