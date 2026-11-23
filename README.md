@@ -13,6 +13,42 @@ check each one on the live site, and with Agent Number 10 connected, show
 what ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews answer about
 you, before a fix and after it.
 
+## Features
+
+**Free, no signup, runs in your agent**
+
+- **SEO audit:** crawling and indexing, redirects, canonicals, titles and
+  meta descriptions, headings, sitemaps, robots.txt, structured data, images,
+  internal links, hreflang, local business and e-commerce pages, trust
+  signals.
+- **Core Web Vitals** from Google's PageSpeed Insights, with your own free key.
+- **AEO / GEO audit:** AI crawler access for ChatGPT, Claude, Perplexity,
+  Google AI Overviews and Copilot, content that needs JavaScript to appear,
+  the brand as an entity, pages that answer your buyers' questions, llms.txt.
+- **A fix list you can act on:** every finding has the evidence, the exact
+  change, and a `Passes when` test.
+- **Fixes made in your code:** it finds where each page is built (Next.js,
+  Astro, Nuxt, SvelteKit, Gatsby, Hugo, Jekyll, Eleventy or plain HTML), makes
+  the smallest change, one commit per fix, and opens a pull request you
+  review. It asks before it pushes.
+- **Each fix checked on the live site:** pass, fail or could not check, with
+  what was found.
+- **WordPress, Shopify, Wix and other builders:** the exact screen and field
+  to change, then the same live check.
+- **One brand file:** your market, competitors, priority pages and buyer
+  questions, asked once and read by every skill.
+
+**With an Agent Number 10 account**
+
+- **Real AI answers** from ChatGPT, Claude, Perplexity, Gemini and Google AI
+  Overviews: the share that name or cite you, by engine and by question.
+- **Who the assistants name instead of you,** ranked on the same answers.
+- **Before and after:** AI visibility from before a fix went live against
+  after it, with a plain verdict when the change is within the usual range.
+
+**Works in** Claude Code (as a plugin), Codex, Cursor and other agents that
+read `SKILL.md` files.
+
 ## Install
 
 With the skills CLI, for Claude Code, Codex, Cursor and other agents that read
