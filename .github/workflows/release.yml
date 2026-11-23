@@ -31,7 +31,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          version=$(jq -r .version .claude-plugin/plugin.json)
+          version=$(jq -r .version plugins/seo-agent-skills/.claude-plugin/plugin.json)
           if gh release view "v$version" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             release=false
           else

@@ -14,8 +14,14 @@ bin/guard.sh                          # private text and commit format
 To try a change, load the folder as a plugin in Claude Code:
 
 ```sh
-claude --plugin-dir .
+claude --plugin-dir plugins/seo-agent-skills
 ```
+
+The plugin lives in `plugins/seo-agent-skills/`: its manifest, icon,
+README and the skills. That folder is what people install and what the
+Claude plugin directory reviews. The repository's own checks (`bin/`,
+`scripts/`, `.githooks/`) stay outside it, and `skills.sh.json` tells the
+skills CLI where the skills are.
 
 ## What is checked, and where
 
@@ -75,8 +81,8 @@ and anything a reviewer would not see from the diff.
 - Every change reaches `main` through a pull request that CI has passed, and
   is squash-merged with a title that follows the commit format. `main` is
   never force-pushed.
-- Versions follow semantic versioning and live in
-  `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`;
+- Versions follow semantic versioning and live in the plugin's
+  `.claude-plugin/plugin.json` and the root `.claude-plugin/marketplace.json`;
   `scripts/validate.mjs` fails when they differ, or when `CHANGELOG.md` has
   no entry for the version.
 - A release is a pull request that bumps the version in both files and adds
@@ -105,10 +111,10 @@ and anything a reviewer would not see from the diff.
   README, with what is sent.
 
 **Format**
-- Each skill is a folder in `skills/` with a `SKILL.md` that follows the
-  Agent Skills format: `name` equal to the folder, a `description` that says
-  what it does and when to use it, under 500 lines. Detail goes in its
-  `references/` folder.
+- Each skill is a folder in `plugins/seo-agent-skills/skills/` with a
+  `SKILL.md` that follows the Agent Skills format: `name` equal to the
+  folder, a `description` that says what it does and when to use it, under
+  500 lines. Detail goes in its `references/` folder.
 - Plain words, straight quotes, no long dashes.
 
 ## Licence
