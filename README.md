@@ -1,9 +1,17 @@
 # SEO Agent Skills for Claude Code, Codex and Cursor
 
-Skills that audit a website for search and AI search, make the fixes in your
-code as a pull request, and check each fix on the live site. Connect Agent
-Number 10 to see what ChatGPT, Claude, Perplexity, Gemini and Google AI
-Overviews answer about you, before a fix and after it.
+**Audits that end in a pull request, fixes checked on the live site, and AI
+answers measured before and after.**
+
+[![CI](https://github.com/akootahq/seo-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/akootahq/seo-agent-skills/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/akootahq/seo-agent-skills)](https://github.com/akootahq/seo-agent-skills/releases)
+
+Eight skills for search and AI search (AEO, also called GEO). They audit a
+site the way a careful consultant would, make the fixes in your own code,
+check each one on the live site, and with Agent Number 10 connected, show
+what ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews answer about
+you, before a fix and after it.
 
 ## Install
 
@@ -22,6 +30,36 @@ claude plugin install seo-agent-skills@seo-agent-skills
 ```
 
 Or copy the folders in `skills/` into your agent's skills folder.
+
+## A real run
+
+On agentnumber10.com, 23 November 2026, with nothing but the skills installed.
+
+**`seo-audit`** read 5 pages and found 9 issues: 1 high, 1 medium, 7 low. The
+high one: `http://agentnumber10.com/` served a full copy of the site instead
+of redirecting to HTTPS, and `http://www.agentnumber10.com/` returned a
+Cloudflare 522 error. Each finding came with the change to make and the test
+that proves it:
+
+> Passes when: `http://agentnumber10.com/`, `http://agentnumber10.com/pricing`
+> and `http://www.agentnumber10.com/` each end on a 200 after exactly 1
+> redirect, and no variant returns a 5xx.
+
+**The fix** was one Cloudflare setting, Always Use HTTPS.
+
+**`verify-fix`** then ran that test against the live site: 2 of the 3
+addresses passed. `http://www` now loads, but it takes 2 redirects instead
+of 1, so it stays a fail until a redirect rule sends it straight to the main
+address. It also checked a second finding nobody had fixed yet, a duplicate
+canonical tag, and reported it still there on all 6 comparison pages.
+
+**`aeo-audit`** found 9 things that make the site harder for AI assistants
+to quote, among them: the pricing page has no sentence that answers "how
+much does it cost" on its own, no page shows when it was last updated, and
+llms.txt describes crawler access that robots.txt does not grant. Every
+assistant came out as "unknown" rather than "ready", because the site sits
+behind Cloudflare, whose bot rules cannot be checked from outside, and the
+report said so instead of guessing.
 
 ## The skills
 
@@ -50,6 +88,19 @@ Ask your agent in plain words. For example:
 Every finding carries a `Passes when` line: the test that proves it is fixed.
 The audit writes it, the pull request repeats it, and `verify-fix` runs it.
 
+## Where these skills go further
+
+Many audits stop at a list of problems. These skills keep going:
+
+- **The fix is made for you.** `seo-fix` finds where each page is built in
+  your framework, makes the smallest change that passes the check, and opens
+  a pull request. It asks before it pushes anything.
+- **Each fix is checked on the live site.** Not a checklist to tick by hand:
+  `verify-fix` fetches the page as it is served now and runs the test.
+- **AI answers before and after.** With Agent Number 10 connected,
+  `prove-fix` compares readings from before a fix went live with readings
+  after it, and says plainly when the difference is within the usual range.
+
 ## How it compares
 
 | | By hand | An agency | SEO software | These skills |
@@ -71,6 +122,8 @@ The audit writes it, the pull request repeats it, and `verify-fix` runs it.
   your domain and the questions you track to Agent Number 10, which collects
   the answers.
 - Skills that run a paid lookup ask before running it.
+- Pages and AI answers are treated as data, never as instructions: text on a
+  page written to steer an agent is reported, not followed.
 
 ## Files the skills write
 
