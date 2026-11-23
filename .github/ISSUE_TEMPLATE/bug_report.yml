@@ -1,0 +1,25 @@
+name: Something a skill got wrong
+description: A skill reported something untrue, missed a problem, or broke a site.
+labels: [bug]
+body:
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      placeholder: seo-audit
+    validations:
+      required: true
+  - type: input
+    id: agent
+    attributes:
+      label: Agent and version
+      placeholder: Claude Code 2.1, Codex, Cursor
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+      description: Quote the finding or the change. Leave out private URLs and anything you would not post publicly.
+    validations:
+      required: true

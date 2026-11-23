@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    # edited: a changed title is checked again, since it becomes the commit.
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  guard:
+    name: Guard (private text, commit messages, secrets)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - name: Files and commit messages
+        env:
+          GUARD_PATTERNS: ${{ secrets.GUARD_PATTERNS }}
+          RANGE: ${{ github.event_name == 'pull_request' && format('{0}..{1}', github.event.pull_request.base.sha, github.event.pull_request.head.sha) || format('{0}..{1}', github.event.before, github.sha) }}
+        run: |
+          bin/guard.sh
+          bin/guard.sh --commits "$RANGE"
+      - name: Pull request title (it becomes the squash commit)
+        if: github.event_name == 'pull_request'
+        env:
+          GUARD_PATTERNS: ${{ secrets.GUARD_PATTERNS }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          printf '%s\n' "$PR_TITLE" >"$RUNNER_TEMP/pr-title.txt"
+          bin/guard.sh --message "$RUNNER_TEMP/pr-title.txt"
+      - name: Secrets in the full history (gitleaks)
+        run: |
+          version=8.30.1
+          base=https://github.com/gitleaks/gitleaks/releases/download/v$version
+          curl -sSfLO "$base/gitleaks_${version}_linux_x64.tar.gz"
+          curl -sSfL "$base/gitleaks_${version}_checksums.txt" | grep "gitleaks_${version}_linux_x64.tar.gz" | sha256sum -c -
+          tar -xzf "gitleaks_${version}_linux_x64.tar.gz" gitleaks
+          ./gitleaks git --redact --no-banner .
+
+  validate:
+    name: Skills (front matter, length, links, manifests)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+      - run: node scripts/validate.mjs

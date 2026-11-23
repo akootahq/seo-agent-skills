@@ -1,0 +1,6 @@
+#!/bin/sh
+# Runs before every commit. Enable once per clone: git config core.hooksPath .githooks
+set -e
+
+bin/guard.sh --staged
+node scripts/validate.mjs

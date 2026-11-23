@@ -81,9 +81,12 @@ to `.gitignore`.
 
 ## Contributing
 
-Issues and pull requests are welcome. Run `node scripts/validate.mjs` before
-opening one: it checks every skill's front matter, length and links.
+Issues and pull requests are welcome. [CONTRIBUTING.md](CONTRIBUTING.md) has
+the checks and the rules the skills keep; security reports go through
+[SECURITY.md](SECURITY.md).
 
 ## License
 
-MIT. Made by [Agent Number 10](https://agentnumber10.com).
+The skills are MIT licensed. The Agent Number 10 name and logo are trademarks
+and are not covered by the licence. Made by
+[Agent Number 10](https://agentnumber10.com).
