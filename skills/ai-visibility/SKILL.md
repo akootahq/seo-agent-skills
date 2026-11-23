@@ -35,14 +35,23 @@ Call `list_sites`. If the domain from `.agents/seo-brand.md` is there, use its
 
 If it is not:
 
-1. Call `search_markets` with the market from the brand file to get its
-   location code.
+1. Find the location code for the market in the brand file. If the workspace
+   already has a site, call `search_markets` with that site's `projectId`.
+   If this is the workspace's first site, `search_markets` cannot run yet
+   (it needs a site): take the code from
+   [references/markets.md](references/markets.md).
 2. Call `add_site` with the name, domain and location code.
 3. It answers that it needs confirmation, because it starts live lookups.
    Tell the user it will measure the site now and that this uses the
    workspace's allowance, then call it again with `confirm: true` only after
    they agree.
 4. Follow progress with `get_job_status` until the first reading is in.
+
+If the site is there but has never been measured, `get_ai_visibility` says
+there is no reading yet and `get_ai_prompts` lists no questions. Offer
+`run_full_measurement`: it picks the questions, asks the engines and audits
+the site. It needs confirmation for the same reason as `add_site`. Follow it
+with `get_job_status`, then read the results.
 
 ## 3. Read the results
 

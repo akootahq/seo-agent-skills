@@ -19,6 +19,13 @@ either. Because the denominator is shared, the rates compare directly.
 
 Report a table: domain, named, cited, either, and the gap to the leader.
 
+If it says there is no competitor standing yet, the site has no reading, or
+no competitors were found when it was measured. With no reading, run
+`ai-visibility` first. Competitors are found by the measurement itself, from
+who ranks and gets cited for the site's questions; there is no tool to add one
+by hand, so a competitor missing from the results goes in the brand file and
+in the report as "not measured".
+
 ## 2. Share of voice
 
 Call `get_share_of_voice` for the site against up to nine competitors. It
