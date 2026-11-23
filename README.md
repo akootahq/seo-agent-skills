@@ -137,7 +137,19 @@ Many audits stop at a list of problems. These skills keep going:
   `prove-fix` compares readings from before a fix went live with readings
   after it, and says plainly when the difference is within the usual range.
 
-## Compared with other SEO skills
+## How it compares
+
+| | Audit skills (claude-seo, geo-seo-claude, marketingskills) | Data apps (OpenSEO, GEO Optimizer) | SEO Agent Skills |
+| --- | --- | --- | --- |
+| Finds what to fix | ✅ | ✅ | ✅ |
+| Makes the fix | Plans or drafts; you apply them | Reports; GEO Optimizer can write files | ✅ a pull request in your code |
+| Checks each fix on the live site | Not built in; claude-seo compares baselines | GEO Optimizer re-audits with history | ✅ pass or fail, with evidence |
+| Real answers from AI engines | Only through paid add-ons, if at all | With your own API keys, or a hosted plan | ✅ 5 engines, no keys of your own |
+| AI answers before and after a fix | ❌ | History or trends, with your keys or plan | ✅ |
+| Install | Markdown, or Python and a script | An app, or a Python CLI | Markdown only |
+
+<details>
+<summary><b>Full comparison: 8 projects, feature by feature</b></summary>
 
 | | SEO Agent Skills | claude-seo | OpenSEO | GEO Optimizer | Ryze SEO MCP skills | marketingskills | Illyism seo-skills | geo-seo-claude |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -153,6 +165,8 @@ Many audits stop at a list of problems. These skills keep going:
 
 Read from each project's own repository (README, docs and code) on 23 November
 2026. If something here is out of date or wrong, open an issue and it gets corrected.
+
+</details>
 
 ## Compared with doing it another way
 
