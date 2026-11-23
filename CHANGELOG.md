@@ -4,6 +4,13 @@ Each entry says what changed for the people using the skills. Versions follow
 semantic versioning; the skills stay at `0.x` while their files and outputs
 settle.
 
+## 0.1.1 (23 November 2026)
+
+- The Claude Code plugin connects to Agent Number 10 at
+  `https://app.agentnumber10.com/mcp` directly. It no longer asks for an
+  address when you install it. To use your own install instead, add it with
+  `claude mcp add --transport http agentnumber10 <your address>/mcp`.
+
 ## 0.1.0 (23 November 2026)
 
 The first release: eight skills for search and AI search, for Claude Code,
