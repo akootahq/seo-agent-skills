@@ -1,0 +1,18 @@
+{
+  "name": "seo-agent-skills",
+  "owner": {
+    "name": "Agent Number 10",
+    "url": "https://agentnumber10.com"
+  },
+  "metadata": {
+    "description": "SEO and AI search skills for Claude Code, Codex and Cursor: audits that end in a pull request, fixes checked on the live site, and AI answers measured before and after.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "seo-agent-skills",
+      "description": "8 skills: brand context, SEO audit, AEO audit, fix as a pull request, verify a fix live, AI visibility, AI competitors and before/after proof.",
+      "source": "./"
+    }
+  ]
+}
