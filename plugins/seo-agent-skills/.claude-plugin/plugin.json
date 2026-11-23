@@ -1,7 +1,7 @@
 {
   "name": "seo-agent-skills",
   "displayName": "SEO Agent Skills",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "SEO and AI search (AEO/GEO) audits that end in a pull request, with each fix checked on the live site. Connect Agent Number 10 to see what ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews say about you, before and after.",
   "author": {
     "name": "Agent Number 10",
@@ -11,6 +11,9 @@
   "repository": "https://github.com/akootahq/seo-agent-skills",
   "license": "MIT",
   "privacyPolicyUrl": "https://agentnumber10.com/privacy",
+  "termsOfServiceUrl": "https://agentnumber10.com/terms",
+  "supportUrl": "https://github.com/akootahq/seo-agent-skills/issues",
+  "documentationUrl": "https://agentnumber10.com/tools/seo-agent-skills",
   "keywords": [
     "seo",
     "seo-audit",
