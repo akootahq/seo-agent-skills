@@ -137,7 +137,24 @@ Many audits stop at a list of problems. These skills keep going:
   `prove-fix` compares readings from before a fix went live with readings
   after it, and says plainly when the difference is within the usual range.
 
-## How it compares
+## Compared with other SEO skills
+
+| | SEO Agent Skills | claude-seo | OpenSEO | marketingskills | Illyism seo-skills | geo-seo-claude |
+| --- | --- | --- | --- | --- | --- | --- |
+| SEO audit | ✅ | ✅ 29 skills | ✅ site audit | Guidance | ✅ | GEO-first, SEO supported |
+| AI search (AEO/GEO) audit | ✅ | ✅ | Not listed | Guidance | ✅ | ✅ |
+| Makes the fix in your code | ✅ pull request | ❌ action plan | ❌ reports and data | ❌ | ✅ pull requests and diffs | ❌ reports and PDFs |
+| Checks each fix on the live site | ✅ pass or fail, with evidence | Each fix says how to check it | Not listed | Not listed | Not listed | Not listed |
+| Real answers from AI engines | ✅ 5 engines, with an Agent Number 10 account | Through paid extensions | ✅ hosted, or with your own data key | ❌ | With your own data key | ❌ scores how quotable pages are |
+| AI answers before and after a fix | ✅ with an Agent Number 10 account | ❌ | Trend over time | ❌ | ❌ | ❌ |
+| Runs in | Claude Code, Codex, Cursor and other SKILL.md agents | Claude Code | Its own app, plus MCP for agents | Claude Code, Codex and agents via the skills CLI | Claude Code, Cursor, Codex and more | Claude Code |
+| Install | Markdown only | Python and an install script | Docker, or the hosted app | Markdown only | Markdown only | Python and an install script |
+| Price | Free (MIT); AI answers need an account | Free (MIT) | Free self-hosted; hosted from $10 a month | Free (MIT) | Free | Free (MIT) |
+
+Read from each project's own README on 23 November 2026. If something here
+is out of date or wrong, open an issue and it gets corrected.
+
+## Compared with doing it another way
 
 | | By hand | An agency | SEO software | These skills |
 | --- | --- | --- | --- | --- |
