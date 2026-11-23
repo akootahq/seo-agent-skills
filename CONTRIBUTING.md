@@ -77,9 +77,15 @@ and anything a reviewer would not see from the diff.
   never force-pushed.
 - Versions follow semantic versioning and live in
   `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`;
-  `scripts/validate.mjs` fails when they differ. A release is a pull request
-  that bumps both, tagged `vX.Y.Z` with notes written for the people using
-  the skills.
+  `scripts/validate.mjs` fails when they differ, or when `CHANGELOG.md` has
+  no entry for the version.
+- A release is a pull request that bumps the version in both files and adds
+  its `CHANGELOG.md` entry, written for the people using the skills. Merging
+  it releases it: the Release workflow creates the GitHub release `vX.Y.Z` at
+  that commit, with the entry as its notes. A merge that does not change the
+  version releases nothing.
+- If a release stops half way, run the Release workflow by hand from the
+  Actions tab; it skips a version that is already released.
 
 ## Rules the skills keep
 
