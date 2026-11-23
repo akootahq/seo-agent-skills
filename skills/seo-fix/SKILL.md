@@ -77,9 +77,14 @@ git switch -c seo-fixes/$(date +%Y-%m-%d)
 Once the pull request is merged and deployed, run `verify-fix` on the same
 findings.
 
-If Agent Number 10 is connected, record each fix with `mark_fix_applied`
-(where it changed, and the pull request link). `prove-fix` uses those records
-to compare AI answers before and after.
+Record when each fix went live, so `prove-fix` can compare AI answers before
+and after it:
+
+- A finding from Agent Number 10's fix plan has an `issueId`: record it with
+  `mark_fix_applied` (where it changed, and the pull request link).
+- A finding from `seo-audit` or `aeo-audit` has no `issueId`, and
+  `mark_fix_applied` cannot take it. Add the merge date and the pull request
+  link under the finding in its audit file instead.
 
 ## When the site is not in this repository
 

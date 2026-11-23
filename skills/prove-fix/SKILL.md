@@ -14,13 +14,15 @@ Connect and find the site as in `ai-visibility` (steps 1 and 2).
 
 Use, in order:
 
-1. the fixes recorded with `mark_fix_applied` (`seo-fix` records them when
-   Agent Number 10 is connected);
-2. the merge dates of the `seo-fix` pull requests;
+1. fixes from Agent Number 10's fix plan, recorded with `mark_fix_applied`;
+2. the merge dates `seo-fix` wrote into the audit files in `.agents/audits/`,
+   or the merge dates of its pull requests;
 3. dates the user gives.
 
-If a fix has not been recorded yet, record it now with `mark_fix_applied`,
-with where it changed and the pull request link.
+A fix from the fix plan that was never recorded can be recorded now with
+`mark_fix_applied` (it needs the `issueId`, where it changed and the pull
+request link). Fixes from the local audits have no `issueId`; use their merge
+dates.
 
 ## 2. Give the assistants time
 
