@@ -4,6 +4,12 @@ Each entry says what changed for the people using the skills. Versions follow
 semantic versioning; the skills stay at `0.x` while their files and outputs
 settle.
 
+## 0.1.3 (23 November 2026)
+
+- The plugin's listing links to its documentation page, where to get
+  support (GitHub issues) and the terms of service, beside the privacy
+  policy.
+
 ## 0.1.2 (23 November 2026)
 
 - The plugin moved to `plugins/seo-agent-skills/`, with its own README that
