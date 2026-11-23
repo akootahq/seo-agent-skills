@@ -1,17 +1,19 @@
 # SEO Agent Skills for Claude Code, Codex and Cursor
 
-**Audits that end in a pull request, fixes checked on the live site, and AI
-answers measured before and after.**
+**Claude Code SEO and AEO skills that make the fix, not just the report:** an
+SEO and AI search audit, the fixes as a pull request, each fix checked on the
+live site, and your AI visibility measured before and after.
 
 [![CI](https://github.com/akootahq/seo-agent-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/akootahq/seo-agent-skills/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/akootahq/seo-agent-skills)](https://github.com/akootahq/seo-agent-skills/releases)
 
-Eight skills for search and AI search (AEO, also called GEO). They audit a
-site the way a careful consultant would, make the fixes in your own code,
-check each one on the live site, and with Agent Number 10 connected, show
-what ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews answer about
-you, before a fix and after it.
+Eight skills for SEO and AI search: answer engine optimization (AEO), also
+called generative engine optimization (GEO). They audit a site the way a
+careful consultant would, make the fixes in your own code, check each one on
+the live site, and with Agent Number 10 connected, show what ChatGPT, Claude,
+Perplexity, Gemini and Google AI Overviews answer about you, before a fix and
+after it.
 
 ## Features
 
