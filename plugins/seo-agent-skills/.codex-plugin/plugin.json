@@ -1,6 +1,6 @@
 {
   "name": "an10-seo-skills",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "SEO and AI search (AEO/GEO) audits that end in a pull request, with each fix checked on the live site. Connect Agent Number 10 to see what the major AI assistants say about you, before and after.",
   "author": {
     "name": "Agent Number 10",
@@ -22,10 +22,10 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Agent Number 10 SEO Skills",
-    "shortDescription": "SEO and AEO audits that end in a pull request",
-    "longDescription": "SEO and AI search (AEO/GEO) audits that end in a pull request, with each fix checked on the live site. Connect Agent Number 10 to see what the major AI assistants say about you, before and after.",
+    "shortDescription": "SEO and AEO audits with fixes",
+    "longDescription": "Agent skills for SEO and AI search (AEO/GEO). Audit a website's technical and on-page SEO, its structured data, images, internal links and readiness for AI assistants; make the fixes in your own code as a pull request; and check each fix on the live site. With an Agent Number 10 account it also reads what AI assistants answer about your brand, who they name instead, your Search Console data, keywords and local listings, and shows readings before and after a fix. For website owners, developers, SEO specialists and agencies. Limits: the page audits read public pages only; skills that use your own data providers need your own keys; AI answers and history need an Agent Number 10 account.",
     "developerName": "Agent Number 10",
-    "category": "Productivity",
+    "category": "Business & Operations",
     "capabilities": [
       "Read",
       "Write"
@@ -38,7 +38,8 @@
       "Check whether my site is ready for AI search."
     ],
     "composerIcon": "./.claude-plugin/icon.png",
-    "logo": "./.claude-plugin/icon.png"
+    "logo": "./.claude-plugin/icon.png",
+    "supportURL": "https://github.com/akootahq/seo-agent-skills/issues"
   },
   "mcpServers": "./mcp.json"
 }

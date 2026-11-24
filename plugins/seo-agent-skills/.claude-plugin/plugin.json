@@ -1,7 +1,7 @@
 {
   "name": "an10-seo-skills",
   "displayName": "Agent Number 10 SEO Skills",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "SEO and AI search (AEO/GEO) audits that end in a pull request, with each fix checked on the live site. Connect Agent Number 10 to see what the major AI assistants say about you, before and after.",
   "author": {
     "name": "Agent Number 10",
