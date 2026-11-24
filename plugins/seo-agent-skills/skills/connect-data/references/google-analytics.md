@@ -18,54 +18,21 @@ Analytics connected.
 Google has no official MCP server for Search Console. For Search Console
 data, use Agent Number 10 or a Search Console export.
 
-## What the user needs
+## Setting it up
 
-- pipx (https://pipx.pypa.io/stable/#install-pipx), with Python 3.10 or
-  later.
-- The Google Cloud CLI, `gcloud` (https://docs.cloud.google.com/sdk/docs/install).
-- A Google Cloud project with two APIs enabled: the Google Analytics Admin
-  API and the Google Analytics Data API
-  (https://console.cloud.google.com/apis/library/analyticsadmin.googleapis.com
-  and https://console.cloud.google.com/apis/library/analyticsdata.googleapis.com).
-- An OAuth client for a desktop app in that project, downloaded as a JSON
-  file (Google's help: https://support.google.com/cloud/answer/15549257).
-  Keep the file outside the project.
-- A Google account that can read the site's Analytics property.
-
-## Set it up
-
-The user runs every step; do not run the sign-in for them.
-
-1. Sign in with Application Default Credentials and the Analytics read-only
-   scope, using the downloaded client file:
-
-   ```sh
-   gcloud auth application-default login --scopes https://www.googleapis.com/auth/analytics.readonly,https://www.googleapis.com/auth/cloud-platform --client-id-file=PATH_TO_CLIENT_JSON
-   ```
-
-   It opens the browser. When it finishes it prints `Credentials saved to
-   file: [PATH_TO_CREDENTIALS_JSON]`. That path is needed next.
-
-2. Add Google's server with that path and the Google Cloud project ID, as
-   Google's README describes
-   (https://github.com/googleanalytics/google-analytics-mcp). This
-   repository's guide (https://github.com/akootahq/seo-agent-skills/blob/main/docs/connect/google-analytics.md)
-   has the exact entry for Claude Code, Codex and Cursor.
-
-3. Restart the agent.
-
-The two values are a file path and a project ID, not secrets, so they can
-sit in the agent's settings. The credentials file they point to holds the
-sign-in: it stays where `gcloud` saved it, outside the project, and is never
-opened, copied or printed.
-
-On macOS, if calls fail with `Failed to resolve analyticsadmin.googleapis.com`
-while the address resolves in the terminal, Google's troubleshooting guide
-adds `GRPC_DNS_RESOLVER=native` to the server's environment.
+Google's server runs on the user's machine, so setting it up is outside this
+plugin. The user follows Google's README
+(https://github.com/googleanalytics/google-analytics-mcp) or this
+repository's guide (https://github.com/akootahq/seo-agent-skills/blob/main/docs/connect/google-analytics.md),
+which lists what it needs (pipx, the Google Cloud CLI, a Google Cloud project
+with the Analytics Admin and Data APIs, and a sign-in with the Analytics
+read-only scope). The credentials file that sign-in creates stays where
+Google saved it, outside the project, and is never opened, copied or
+printed.
 
 ## Check
 
-1. List the server's tools (`/mcp` in Claude Code and Codex; the MCP
+1. When the server is connected, list its tools (`/mcp` in Claude Code and Codex; the MCP
    settings in Cursor). They include `get_account_summaries` and
    `run_report`.
 2. Call `get_account_summaries`: the accounts and properties the Google
@@ -77,9 +44,7 @@ Report "connected", or the error as given.
 
 ## Disconnect
 
-- **Claude Code:** `claude mcp remove analytics-mcp`.
-- **Codex:** `codex mcp remove analytics-mcp`.
-- **Cursor:** remove the server in Cursor's MCP settings.
+- Remove the server the way it was added; the guide above has the steps.
 - To withdraw the sign-in itself, `gcloud auth application-default revoke`
   revokes the credentials and deletes the local file. Anything else on the
   machine that uses those credentials stops working too, so the user

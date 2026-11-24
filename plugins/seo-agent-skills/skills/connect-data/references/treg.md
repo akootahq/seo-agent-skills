@@ -5,18 +5,13 @@ from a prepaid balance with treg, so the user needs no DataForSEO account.
 It serves `keyword-research`, `content-brief` and `local-seo` with the same
 data. Calls are billed to the user's treg balance.
 
-## As a plugin
+## treg's own plugin and skill
 
-- **Claude Code:** run these, then `/mcp`, choose `treg` and sign in.
-
-  ```text
-  /plugin marketplace add superdesigndev/treg
-  /plugin install treg@treg
-  ```
-
-- **Codex, Cursor and other agents:** install treg's own skill as treg
-  describes it (https://treg.to/skill.md, and this repository's guide:
-  https://github.com/akootahq/seo-agent-skills/blob/main/docs/connect/treg.md), then sign in as it describes.
+treg also has its own Claude Code plugin and a skill for other agents, with
+sign-in. Installing them is outside this plugin: the user follows treg's
+instructions (https://treg.to/skill.md) or this repository's guide
+(https://github.com/akootahq/seo-agent-skills/blob/main/docs/connect/treg.md). If treg's tools are already connected, use
+them.
 
 ## With a token
 
@@ -34,7 +29,7 @@ relays only the DataForSEO paths its catalog lists: any other path answers
 
 ## Check
 
-- Plugin: list treg's tools (`/mcp`).
+- treg's own plugin, when installed: list its tools (`/mcp`).
 - Token: check it is set, which prints only "set" or "not set":
 
   ```sh
@@ -47,8 +42,7 @@ relays only the DataForSEO paths its catalog lists: any other path answers
 
 ## Disconnect
 
-- Plugin: `/plugin uninstall treg@treg` in Claude Code. In other agents,
-  remove treg's skill the way it was installed.
+- treg's own plugin or skill: remove it the way it was installed.
 - Token: delete the `export` line from the shell profile. To stop the token
   working everywhere, check treg's docs (https://treg.to/skill.md) for how
   to replace it.

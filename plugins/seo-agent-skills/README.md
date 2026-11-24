@@ -73,8 +73,8 @@ runs it.
   your site's address and the URLs they look up to Microsoft's Bing
   Webmaster API. `bing-webmaster` submits URLs to Bing only after you agree
   to the list.
-- With Google's own Analytics MCP server (`analytics-mcp`, which you add
-  yourself), `search-console`, `content-refresh` and `client-report` read
+- With Google's own Analytics MCP server (`analytics-mcp`), when you have
+  connected it yourself, `search-console`, `content-refresh` and `client-report` read
   your Google Analytics reports with your own Google account. The plugin
   does not add that server.
 - `search-console` can read a Search Console export you download instead;

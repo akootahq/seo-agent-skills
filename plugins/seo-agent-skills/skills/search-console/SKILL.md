@@ -166,7 +166,7 @@ site, not clicks counted by Google). Report it under its own name and never
 merge the two.
 
 Without Analytics in Agent Number 10, Google's own Analytics MCP server
-(`analytics-mcp`, set up with `connect-data`) gives the same view, on the
+(`analytics-mcp`, when it is connected; see `connect-data`) gives the same view, on the
 export path too. Take the property ID from `get_account_summaries` (the
 user confirms which property), then call `run_report` twice, once per
 period:

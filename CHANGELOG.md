@@ -4,6 +4,15 @@ Each entry says what changed for the people using the skills. Versions follow
 semantic versioning; the skills stay at `0.x` while their files and outputs
 settle.
 
+## 0.2.2 (24 November 2026)
+
+- The plugin no longer walks you through adding another provider's MCP
+  server or plugin (DataForSEO, Ahrefs, treg, Google Analytics). Inside the
+  plugin, each source keeps the setup that needs no extra server, an API
+  key or token in your environment, and links to the provider's own
+  instructions and to the guides in `docs/connect/`, which keep every step.
+  A provider's server you have already connected is used as before.
+
 ## 0.2.1 (24 November 2026)
 
 - The Claude Code plugin is now named `an10-seo-skills`, because the

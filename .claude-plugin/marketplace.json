@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "SEO and AI search skills for Claude Code, Codex and Cursor: audits that end in a pull request, fixes checked on the live site, and AI answers measured before and after.",
-    "version": "0.2.1"
+    "version": "0.2.2"
   },
   "plugins": [
     {
