@@ -6,6 +6,15 @@ own code as a pull request, and check each fix on the live site. With an
 Agent Number 10 account they also show what ChatGPT, Claude, Perplexity,
 Gemini and Google AI Overviews answer about you, before a fix and after it.
 
+## Install
+
+- **Claude Code:** `/plugin install an10-seo-skills --marketplace akootahq/seo-agent-skills`
+  (or `/plugin marketplace add akootahq/seo-agent-skills`, then
+  `/plugin install an10-seo-skills@seo-agent-skills`).
+- **Codex:** `codex plugin marketplace add akootahq/seo-agent-skills`, then
+  `/plugins` in a Codex session.
+- **Other agents:** `npx skills add akootahq/seo-agent-skills`.
+
 ## The skills
 
 | Skill | What it does | Needs |

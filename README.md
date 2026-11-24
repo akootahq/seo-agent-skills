@@ -37,7 +37,8 @@ Browse the skills on the web: [agentnumber10.com/tools/seo-agent-skills](https:/
 | --- | --- |
 | Claude Code, as a plugin (adds the Agent Number 10 connection too) | `claude plugin marketplace add akootahq/seo-agent-skills`, then `claude plugin install an10-seo-skills@seo-agent-skills` |
 | Claude Code, skills only | `npx skills add akootahq/seo-agent-skills -a claude-code` |
-| Codex | `npx skills add akootahq/seo-agent-skills -a codex` |
+| Codex, as a plugin (adds the Agent Number 10 connection too) | `codex plugin marketplace add akootahq/seo-agent-skills`, then `/plugins` in a Codex session and pick Agent Number 10 SEO Skills |
+| Codex, skills only | `npx skills add akootahq/seo-agent-skills -a codex` |
 | Cursor | `npx skills add akootahq/seo-agent-skills -a cursor` |
 | Any other agent that reads `SKILL.md` files | `npx skills add akootahq/seo-agent-skills`, and choose your agent when asked |
 
