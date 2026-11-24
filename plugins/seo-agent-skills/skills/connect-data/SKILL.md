@@ -41,7 +41,8 @@ What each source is:
   issues, URL details, inbound links and URL submission.
 - **Google Analytics, through Google's MCP server:** free. Sessions and the
   landing pages organic visits start on, with the user's own Google
-  account.
+  account. The server runs on the user's machine and is set up outside this
+  plugin, from Google's README or this repository's guide.
 - **A Search Console export:** free, no account. Queries, pages and daily
   figures. Google has no official Search Console MCP server, so live Search
   Console data and index checks come through Agent Number 10.
@@ -120,15 +121,17 @@ settings.
 
 ## 3. The user's own accounts and the free sources
 
-Each has its own file, with the setup for Claude Code, Codex and Cursor, the
-check, and how to disconnect. Read the one for the chosen source and follow
+Each has its own file, with the setup that needs no extra server (an API key
+or token in the user's environment), the check, and how to disconnect. A
+provider's own MCP server or plugin is set up outside this plugin, from the
+provider's instructions or this repository's guides in `docs/connect/`. Read the one for the chosen source and follow
 it:
 
 | Source | File |
 | --- | --- |
-| DataForSEO (hosted MCP, local MCP or API login) | [references/dataforseo.md](references/dataforseo.md) |
-| treg (plugin or token) | [references/treg.md](references/treg.md) |
-| Ahrefs (MCP server or API key) | [references/ahrefs.md](references/ahrefs.md) |
+| DataForSEO (API login, or its own MCP server) | [references/dataforseo.md](references/dataforseo.md) |
+| treg (token, or its own plugin) | [references/treg.md](references/treg.md) |
+| Ahrefs (API key, or its own MCP server) | [references/ahrefs.md](references/ahrefs.md) |
 | Bing Webmaster Tools (API key) | [references/bing-webmaster.md](references/bing-webmaster.md) |
 | Google Analytics (Google's MCP server) | [references/google-analytics.md](references/google-analytics.md) |
 | A Search Console export | section 4 below |
