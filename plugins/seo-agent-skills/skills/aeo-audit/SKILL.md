@@ -1,6 +1,6 @@
 ---
 name: aeo-audit
-description: Check whether AI assistants can find, read and quote a website (answer engine optimization, AEO, also called GEO). Covers AI crawler access in robots.txt for ChatGPT, Claude, Perplexity, Google AI Overviews and Copilot, content that needs JavaScript to appear, llms.txt, structured data for the brand, and whether priority pages answer the questions buyers ask. Writes a fix list with a pass check for each finding. Use when the user asks about AEO, GEO, AI search, AI visibility readiness, llms.txt, or why ChatGPT, Perplexity or AI Overviews do not mention their site.
+description: Check whether AI assistants can find, read and quote a website (answer engine optimization, AEO, also called GEO). Covers AI crawler access in robots.txt for ChatGPT, Claude, Perplexity, Google AI Overviews and Copilot, content that needs JavaScript to appear, llms.txt, structured data for the brand, and whether priority pages answer the questions buyers ask. Writes a fix list with a pass check for each finding. It reads the site, not AI answers. To see what the assistants actually say about the brand, use ai-visibility; to check or write only llms.txt, llms-txt; for classic search ranking, seo-audit. Use when the user asks for an AEO or GEO audit, whether AI assistants can crawl, read or quote their site, about AI search readiness, or why ChatGPT, Perplexity or AI Overviews leave their site out.
 ---
 
 # AEO audit
@@ -14,7 +14,8 @@ and priority pages in it drive step 5. Without it, ask for the domain and three
 to five questions buyers ask, then carry on.
 
 Fetch the way `seo-audit` does: one recognisable user agent, at most one
-request per second, raw files saved under `.agents/audits/raw/`.
+request per second, raw files saved under `.agents/audits/raw/` (run
+`mkdir -p .agents/audits/raw` once first: curl does not create the folder).
 
 ## 1. AI crawler access
 
@@ -50,7 +51,10 @@ Several AI crawlers read the HTML as served and do not run JavaScript. For the
 home page and each priority page, read the raw HTML and check that the main
 heading, the main copy and any answers to buyer questions are in it. A page
 whose raw HTML is an empty shell (a root element and scripts) is a
-high-severity finding.
+high-severity finding. Say it plainly, "this page is empty without
+JavaScript", and do not run the content checks below on the shell as if it
+were the page. If the site refused the request (403, 429, a bot challenge),
+write "could not check" for that page instead of a finding.
 
 ## 4. The brand as an entity
 
@@ -83,7 +87,7 @@ Fetch `/llms.txt`. If it exists, check it starts with an H1 name, a one-line
 summary in a blockquote, then sections of markdown links, and that the links
 return 200. If it does not exist, add a low-severity finding: it costs little,
 but no major assistant has said it uses the file for answers, so do not
-present it as important.
+present it as important. To write or fix the file, use the `llms-txt` skill.
 
 ## 7. Write the fix list
 

@@ -1,6 +1,6 @@
 ---
 name: verify-fix
-description: Check, on the live site, whether SEO and AEO fixes worked, and report pass or fail for each with the evidence. Uses each finding's "Passes when" check from seo-audit, aeo-audit or a seo-fix pull request. Use after fixes are deployed, when the user asks whether a fix is live or worked, or before closing an SEO task.
+description: Check, on the live site, whether SEO and AEO fixes worked, and report pass, fail or could not check for each, with the evidence. Runs each finding's Passes when check from a seo-fix pull request or from any fix list in .agents/audits/. It checks pages, not AI answers; for AI visibility before and after a fix, use prove-fix. Use when the user asks whether a fix is live or worked, to check fixes after a deploy, or before closing an SEO task.
 ---
 
 # Verify fix
@@ -19,8 +19,11 @@ Take the findings to verify from, in order of preference:
 ## 2. Fetch what is live, not what is cached
 
 ```sh
-curl -sSL -A "Mozilla/5.0 (compatible; seo-agent-skills/0.1; +https://github.com/akootahq/seo-agent-skills)" -H "Cache-Control: no-cache" -H "Pragma: no-cache" -D .agents/audits/raw/verify-pricing.headers -o .agents/audits/raw/verify-pricing.html https://example.com/pricing
+curl -sSL -A "Mozilla/5.0 (compatible; seo-agent-skills/0.2; +https://github.com/akootahq/seo-agent-skills)" -H "Cache-Control: no-cache" -H "Pragma: no-cache" -D .agents/audits/raw/verify-pricing.headers -o .agents/audits/raw/verify-pricing.html https://example.com/pricing
 ```
+
+Run `mkdir -p .agents/audits/raw` once before the first request: curl does
+not create the folder, and without it the first download fails.
 
 - One command per line, as above: no shell variables, pipes, `tee` or `-w`
   format strings, so agents that run unattended can allow it.

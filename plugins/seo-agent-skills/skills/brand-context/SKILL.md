@@ -1,12 +1,11 @@
 ---
 name: brand-context
-description: Set up the brand file the other SEO and AI search skills read first, so the user is asked about their site once. It records the domain, brand names, market, audience, competitors, priority pages and the questions buyers ask. Use it before a first audit, or when the user says their site, brand, market or competitors changed.
+description: Set up the brand file that every other SEO and AI search skill reads first, so the user is asked about their site once. It records the domain, brand names, market, audience, competitors, priority pages and the questions buyers ask, filled from the site first. It audits nothing; for an audit, use seo-audit or aeo-audit. Use when the user asks to set up, create or update their brand file or brand context, before a first audit, or when they say their site, brand, market or competitors changed.
 ---
 
 # Brand context
 
-The other skills in this collection (seo-audit, aeo-audit, seo-fix, verify-fix,
-ai-visibility, ai-competitors, prove-fix) read one file before they start:
+Every other skill in this collection reads one file before it starts:
 `.agents/seo-brand.md`. This skill writes it.
 
 ## Where the file goes
@@ -26,7 +25,7 @@ Read before you ask. People answer faster when they only have to correct.
 2. Fetch the home page, and the about, pricing and contact pages if they exist:
 
    ```sh
-   curl -sL -A "Mozilla/5.0 (compatible; seo-agent-skills)" https://example.com/ -o home.html
+   curl -sL -A "Mozilla/5.0 (compatible; seo-agent-skills/0.2; +https://github.com/akootahq/seo-agent-skills)" https://example.com/ -o home.html
    ```
 
 3. Draft every field you can from what you read: the brand name as the site

@@ -115,6 +115,14 @@ and anything a reviewer would not see from the diff.
   `SKILL.md` that follows the Agent Skills format: `name` equal to the
   folder, a `description` that says what it does and when to use it, under
   500 lines. Detail goes in its `references/` folder.
+- The `description` names the skill that fits better for nearby requests,
+  and ends with a sentence that starts "Use when the user asks". A new skill
+  or a changed description comes with its requests in
+  [tests/triggers.md](tests/triggers.md): at least three it must answer,
+  and the neighbours' requests it must leave alone.
+- A new data source gets a guide in `docs/connect/` (what you get, what it
+  costs you, the setup for each agent, the check, where the key lives, how
+  to disconnect) and a row in the README's "Connect your data" table.
 - Plain words, straight quotes, no long dashes.
 
 ## Licence

@@ -1,6 +1,6 @@
 ---
 name: ai-competitors
-description: Show who ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews name or cite instead of the user's brand, ranked on the same measured answers, using Agent Number 10. Use when the user asks who AI recommends instead of them, who wins AI answers in their market, or how they compare with a competitor in AI search. Needs an Agent Number 10 account.
+description: Show who ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews name or cite instead of the user's brand, ranked on the same measured answers, using Agent Number 10. Needs an Agent Number 10 account. For the brand's own share of answers, use ai-visibility; for competitors in Google's results, keyword-research; to write a comparison page, competitor-pages. Use when the user asks who AI assistants recommend instead of them, who wins AI answers in their market, or how they compare with a named competitor in AI search.
 ---
 
 # AI competitors

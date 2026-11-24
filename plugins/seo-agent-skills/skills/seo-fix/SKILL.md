@@ -1,14 +1,21 @@
 ---
 name: seo-fix
-description: Make the fixes from an SEO or AEO audit in the site's own code, as small commits on a branch, and open a pull request that lists each fix with the check that proves it. Handles titles, meta descriptions, headings, canonicals, robots meta, robots.txt, sitemaps, redirects, structured data (JSON-LD), llms.txt, alt text, internal links and FAQ sections. Use when the user wants the audit findings fixed, not just listed, or asks to fix SEO issues in their codebase.
+description: Make the fixes from an SEO or AEO audit in the site's own code, as small commits on a branch, and open a pull request that lists each fix with the check that proves it. Handles titles, meta descriptions, headings, canonicals, robots meta, robots.txt, sitemaps, redirects, structured data (JSON-LD), llms.txt, alt text, internal links and FAQ sections, and gives exact steps for WordPress, Shopify, Wix and other builders. It works from a fix list, so without one, run seo-audit or another audit first; to check fixes that are already live, use verify-fix. Use when the user asks to fix the audit findings rather than list them, to make SEO changes in their codebase, or to open a pull request with the fixes.
 ---
 
 # SEO fix
 
 Turn findings into a pull request the user can review and merge. The input is
-a fix list from `seo-audit` or `aeo-audit` (files in `.agents/audits/`), or the
+a fix list from any audit skill in this collection (files in `.agents/audits/`:
+`seo-`, `aeo-`, `tec-`, `sch-`, `page-`, `img-`, `arc-`, `int-`, `fresh-`,
+`cmp-`, `pseo-`, `llms-`, `local-`, `links-`, `gsc-` or `bing-`), or the
 fix plan from Agent Number 10 if it is connected (`get_fix_plan`, then
 `get_fix` for each issue). Each finding has a `Change` and a `Passes when`.
+When a `Change` names a draft in `.agents/drafts/` (an llms.txt, a comparison
+page), place that file where the finding says, as the change. When it names
+rows of a suggested links table (`L01` to `L03`, from `site-architecture`),
+add each link from its From page to its To page with that row's anchor text,
+in the sentence the row quotes.
 
 ## 1. Agree what to fix
 
@@ -82,7 +89,7 @@ and after it:
 
 - A finding from Agent Number 10's fix plan has an `issueId`: record it with
   `mark_fix_applied` (where it changed, and the pull request link).
-- A finding from `seo-audit` or `aeo-audit` has no `issueId`, and
+- A finding from an audit file has no `issueId`, and
   `mark_fix_applied` cannot take it. Add the merge date and the pull request
   link under the finding in its audit file instead.
 

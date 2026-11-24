@@ -1,6 +1,6 @@
 ---
 name: ai-visibility
-description: Measure what ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews actually answer about a brand, using real answers collected by Agent Number 10. Shows the share of answers that name or cite the site, by engine and by buyer question, and the questions where it is missing. Use when the user asks whether AI assistants mention or recommend them, wants an AI visibility or AI search baseline, or asks how they show up in ChatGPT, Perplexity or AI Overviews. Needs an Agent Number 10 account.
+description: Measure what ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews actually answer about a brand, using real answers collected by Agent Number 10. Shows the share of answers that name or cite the site, by engine and by buyer question, and the questions where it is missing. Needs an Agent Number 10 account. For who is named instead, use ai-competitors; for before and after a fix, prove-fix; for whether the site itself can be read by AI crawlers, aeo-audit. Use when the user asks whether AI assistants mention, cite or recommend them, for an AI visibility or AI search baseline, or how they show up in ChatGPT, Perplexity or AI Overviews.
 ---
 
 # AI visibility

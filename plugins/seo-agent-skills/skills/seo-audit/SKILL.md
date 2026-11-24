@@ -1,6 +1,6 @@
 ---
 name: seo-audit
-description: Run a full technical and on-page SEO audit of a website and write a prioritised fix list, where every finding has the exact change and a check that proves it is fixed. Covers crawling and indexing, redirects, titles, meta descriptions, headings, canonicals, sitemaps, robots.txt, structured data, Core Web Vitals, images, internal links, hreflang, local and e-commerce pages, and trust signals. Use when the user asks for an SEO audit, a site health check, why a site does not rank or is not indexed, or what to fix first.
+description: Run a full technical and on-page SEO audit of a website and write a prioritised fix list, where every finding has the exact change and a check that proves it is fixed. Covers crawling and indexing, redirects, titles, meta descriptions, headings, canonicals, sitemaps, robots.txt, structured data, Core Web Vitals, images, internal links, hreflang, local and e-commerce pages, and trust signals. For one URL, use page-check; for readiness for AI assistants, aeo-audit; for one area in depth, technical-seo, schema, images, site-architecture or international-seo. Use when the user asks for an SEO audit of a site, a site health check, why a site does not rank, or what to fix first.
 ---
 
 # SEO audit
@@ -19,8 +19,11 @@ their logs. Save the headers of every hop with `-D`: they give the status
 codes and the redirect chain.
 
 ```sh
-curl -sSL -A "Mozilla/5.0 (compatible; seo-agent-skills/0.1; +https://github.com/akootahq/seo-agent-skills)" -D .agents/audits/raw/home.headers -o .agents/audits/raw/home.html https://example.com/
+curl -sSL -A "Mozilla/5.0 (compatible; seo-agent-skills/0.2; +https://github.com/akootahq/seo-agent-skills)" -D .agents/audits/raw/home.headers -o .agents/audits/raw/home.html https://example.com/
 ```
+
+Run `mkdir -p .agents/audits/raw` once before the first request: curl does
+not create the folder, and without it the first download fails.
 
 - Write each command on one line, as above: no shell variables, no pipes, no
   `tee`, no `-w` format strings. Agents that run unattended often allow
@@ -28,6 +31,10 @@ curl -sSL -A "Mozilla/5.0 (compatible; seo-agent-skills/0.1; +https://github.com
 - One request per second at most. Save what you fetch under
   `.agents/audits/raw/` so findings can quote it.
 - Read only public pages. Never log in, never submit forms.
+- If the site refuses a request (403, 429, a bot challenge or a login wall),
+  stop fetching that page, slow down, and record "could not check: the site
+  refused the request" with the status. It may refuse only this tool, not
+  search engines, so never report the refusal as the site's own problem.
 
 ## 2. Site-wide checks
 
@@ -57,12 +64,19 @@ everyone else and are often refused, so use the user's own key when they have
 one (free from the Google Cloud console, in `PAGESPEED_API_KEY`):
 
 ```sh
-curl -s "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https%3A%2F%2Fexample.com%2F&strategy=mobile&category=performance&key=$PAGESPEED_API_KEY" -o psi-home.json
+curl -sS "https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=https%3A%2F%2Fexample.com%2F&strategy=mobile&category=performance&key=$PAGESPEED_API_KEY" -o .agents/audits/raw/psi-home.json
 ```
 
+- The call reads the key from the environment, the one exception to the
+  no-variables rule in step 1. Check it with
+  `test -n "$PAGESPEED_API_KEY" && echo set || echo "not set"`, never print
+  it, and never ask for it in the chat.
 - With no key, try once without `&key=`. If Google answers 429 (quota
   exceeded), do not retry: say Core Web Vitals were not measured, and tell the
-  user how to get a key. If Agent Number 10 is connected and measures this
+  user how to get a key: in the Google Cloud console, enable the PageSpeed
+  Insights API, create an API key under APIs and services, Credentials, and
+  set it as `PAGESPEED_API_KEY` in their shell profile (as `connect-data`
+  describes for other keys). If Agent Number 10 is connected and measures this
   site, `get_lighthouse` returns its latest Lighthouse results and Core Web
   Vitals per page; say which date they are from.
 - Report field data from real Chrome users first (`loadingExperience.metrics`):
@@ -97,8 +111,10 @@ reviews or testimonials and whether they say where they come from.
 ## 7. Write the fix list
 
 Save it as `.agents/audits/seo-<domain>-<YYYY-MM-DD>.md`. Start with a short
-summary: pages audited, findings by severity, and the three changes that would
-help most. Then one block per finding, highest severity first:
+summary: the URL of every page audited (so `verify-fix` can run the checks
+that compare pages on the same set), findings by severity, and the three
+changes that would help most. Then one block per finding, highest severity
+first:
 
 ```markdown
 ### SEO-01 Pages missing a meta description (medium)
