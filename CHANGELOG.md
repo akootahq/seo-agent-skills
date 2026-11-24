@@ -4,6 +4,15 @@ Each entry says what changed for the people using the skills. Versions follow
 semantic versioning; the skills stay at `0.x` while their files and outputs
 settle.
 
+## 0.2.1 (24 November 2026)
+
+- The Claude Code plugin is now named `an10-seo-skills`, because the
+  directory found `seo-agent-skills` too close to another listing. Install
+  it with `/plugin install an10-seo-skills@seo-agent-skills`. If you
+  installed 0.2.0 or earlier as a plugin, uninstall
+  `seo-agent-skills@seo-agent-skills` first. Installs through the skills
+  CLI are not affected.
+
 ## 0.2.0 (24 November 2026)
 
 - 18 new skills, 26 in all. Each audit writes the same fix list as

@@ -36,7 +36,7 @@ The plugin already includes the connection.
 
    ```sh
    claude plugin marketplace add akootahq/seo-agent-skills
-   claude plugin install seo-agent-skills@seo-agent-skills
+   claude plugin install an10-seo-skills@seo-agent-skills
    ```
 
 2. In Claude Code, run `/mcp`, choose `agentnumber10` and sign in. Your
