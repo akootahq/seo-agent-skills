@@ -4,6 +4,13 @@ Each entry says what changed for the people using the skills. Versions follow
 semantic versioning; the skills stay at `0.x` while their files and outputs
 settle.
 
+## 0.2.3 (24 November 2026)
+
+- Codex plugin: `codex plugin marketplace add akootahq/seo-agent-skills`,
+  then pick the plugin from `/plugins` in a Codex session. It installs all
+  26 skills and the Agent Number 10 connection, the same as the Claude Code
+  plugin.
+
 ## 0.2.2 (24 November 2026)
 
 - The plugin no longer walks you through adding another provider's MCP

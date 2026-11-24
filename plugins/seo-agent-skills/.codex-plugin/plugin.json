@@ -1,0 +1,44 @@
+{
+  "name": "an10-seo-skills",
+  "version": "0.2.3",
+  "description": "SEO and AI search (AEO/GEO) audits that end in a pull request, with each fix checked on the live site. Connect Agent Number 10 to see what the major AI assistants say about you, before and after.",
+  "author": {
+    "name": "Agent Number 10",
+    "url": "https://agentnumber10.com"
+  },
+  "homepage": "https://github.com/akootahq/seo-agent-skills",
+  "repository": "https://github.com/akootahq/seo-agent-skills",
+  "license": "MIT",
+  "keywords": [
+    "seo",
+    "seo-audit",
+    "aeo",
+    "geo",
+    "ai-visibility",
+    "ai-search",
+    "technical-seo",
+    "agent-skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Agent Number 10 SEO Skills",
+    "shortDescription": "SEO and AEO audits that end in a pull request",
+    "longDescription": "SEO and AI search (AEO/GEO) audits that end in a pull request, with each fix checked on the live site. Connect Agent Number 10 to see what the major AI assistants say about you, before and after.",
+    "developerName": "Agent Number 10",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://agentnumber10.com/tools/seo-agent-skills",
+    "privacyPolicyURL": "https://agentnumber10.com/privacy",
+    "termsOfServiceURL": "https://agentnumber10.com/terms",
+    "defaultPrompt": [
+      "Run an SEO audit of my site and list what to fix first.",
+      "Check whether my site is ready for AI search."
+    ],
+    "composerIcon": "./.claude-plugin/icon.png",
+    "logo": "./.claude-plugin/icon.png"
+  },
+  "mcpServers": "./mcp.json"
+}

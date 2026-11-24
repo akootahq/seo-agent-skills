@@ -1,0 +1,20 @@
+{
+  "name": "seo-agent-skills",
+  "interface": {
+    "displayName": "Agent Number 10 SEO Skills"
+  },
+  "plugins": [
+    {
+      "name": "an10-seo-skills",
+      "source": {
+        "source": "local",
+        "path": "./plugins/seo-agent-skills"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

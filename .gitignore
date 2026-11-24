@@ -1,3 +1,6 @@
 .DS_Store
-.agents/
+# What the skills write when run in this repository. Codex reads the
+# plugin marketplace from .agents/plugins/, so that folder is kept.
+.agents/*
+!.agents/plugins/
 node_modules/

@@ -86,6 +86,15 @@ const market = JSON.parse(readFileSync(join(root, ".claude-plugin/marketplace.js
 if (plugin.version !== market.metadata?.version) {
   fail(join(pluginDir, ".claude-plugin"), `plugin ${plugin.version} and marketplace ${market.metadata?.version} versions differ`);
 }
+// The Codex manifest and marketplace describe the same plugin.
+const codex = JSON.parse(readFileSync(join(pluginDir, ".codex-plugin/plugin.json"), "utf8"));
+for (const key of ["name", "version", "description"]) {
+  if (codex[key] !== plugin[key]) fail(join(pluginDir, ".codex-plugin"), `${key} differs from .claude-plugin/plugin.json`);
+}
+const codexMarket = JSON.parse(readFileSync(join(root, ".agents/plugins/marketplace.json"), "utf8"));
+if (codexMarket.plugins?.[0]?.name !== plugin.name) {
+  fail(join(root, ".agents/plugins/marketplace.json"), `lists ${codexMarket.plugins?.[0]?.name}, not ${plugin.name}`);
+}
 const listed = market.plugins?.[0]?.description ?? "";
 if (!listed.startsWith(`${skills.length} skills`)) {
   fail(join(root, ".claude-plugin/marketplace.json"), `the plugin description should start with "${skills.length} skills"`);
