@@ -24,7 +24,7 @@ Browse the skills on the web: [agentnumber10.com/tools/seo-agent-skills](https:/
 ## Quick start
 
 1. **Install.** In Claude Code, run `/plugin marketplace add akootahq/seo-agent-skills`,
-   then `/plugin install seo-agent-skills@seo-agent-skills`. For Codex, Cursor
+   then `/plugin install an10-seo-skills@seo-agent-skills`. For Codex, Cursor
    and other agents, see [Install](#install).
 2. **Optional: sign in to Agent Number 10** for AI answers and live data. In
    Claude Code, run `/mcp`, choose `agentnumber10` and sign in. Every audit
@@ -35,7 +35,7 @@ Browse the skills on the web: [agentnumber10.com/tools/seo-agent-skills](https:/
 
 | Agent | Command |
 | --- | --- |
-| Claude Code, as a plugin (adds the Agent Number 10 connection too) | `claude plugin marketplace add akootahq/seo-agent-skills`, then `claude plugin install seo-agent-skills@seo-agent-skills` |
+| Claude Code, as a plugin (adds the Agent Number 10 connection too) | `claude plugin marketplace add akootahq/seo-agent-skills`, then `claude plugin install an10-seo-skills@seo-agent-skills` |
 | Claude Code, skills only | `npx skills add akootahq/seo-agent-skills -a claude-code` |
 | Codex | `npx skills add akootahq/seo-agent-skills -a codex` |
 | Cursor | `npx skills add akootahq/seo-agent-skills -a cursor` |
@@ -43,7 +43,7 @@ Browse the skills on the web: [agentnumber10.com/tools/seo-agent-skills](https:/
 
 - **Inside a Claude Code session,** the plugin commands are
   `/plugin marketplace add akootahq/seo-agent-skills` and
-  `/plugin install seo-agent-skills@seo-agent-skills`.
+  `/plugin install an10-seo-skills@seo-agent-skills`.
 - **The skills CLI** ([vercel-labs/skills](https://github.com/vercel-labs/skills))
   needs Node.js 22.20 or later. It installs into the current project; add
   `-g` to install for every project, `--skill seo-audit` for one skill, or
@@ -53,7 +53,7 @@ Browse the skills on the web: [agentnumber10.com/tools/seo-agent-skills](https:/
   into your agent's skills folder: `.claude/skills/` for Claude Code,
   `.agents/skills/` for Codex and Cursor.
 - **Update** with `npx skills update`. **Remove** with
-  `npx skills remove`, or `/plugin uninstall seo-agent-skills@seo-agent-skills`
+  `npx skills remove`, or `/plugin uninstall an10-seo-skills@seo-agent-skills`
   in Claude Code.
 
 There is no Python or install script to run: the skills are text files your
