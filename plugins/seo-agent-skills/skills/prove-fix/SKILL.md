@@ -1,6 +1,6 @@
 ---
 name: prove-fix
-description: Show whether fixes changed what ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews answer, by comparing Agent Number 10 readings from before a fix went live with readings after it. Use when the user asks whether their SEO or AEO work made a difference in AI answers, wants before and after numbers, or needs proof for a client or a manager. Needs an Agent Number 10 account.
+description: Show whether fixes changed what ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews answer, by comparing Agent Number 10 readings from before a fix went live with readings after it. Needs an Agent Number 10 account. To check that a fix is live on the page itself, use verify-fix; for a first reading before any fix, ai-visibility. Use when the user asks whether their SEO or AEO work changed AI answers, for before and after numbers, or for proof for a client or a manager.
 ---
 
 # Prove fix

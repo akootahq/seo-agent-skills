@@ -8,12 +8,133 @@ live site, and your AI visibility measured before and after.
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Release](https://img.shields.io/github/v/release/akootahq/seo-agent-skills)](https://github.com/akootahq/seo-agent-skills/releases)
 
-Eight skills for SEO and AI search: answer engine optimization (AEO), also
+26 skills for SEO and AI search: answer engine optimization (AEO), also
 called generative engine optimization (GEO). They audit a site the way a
 careful consultant would, make the fixes in your own code, check each one on
 the live site, and with Agent Number 10 connected, show what ChatGPT, Claude,
 Perplexity, Gemini and Google AI Overviews answer about you, before a fix and
 after it.
+
+[Quick start](#quick-start) · [Install](#install) · [The skills](#the-skills) · [Connect your data](#connect-your-data) · [Features](#features) · [A real run](#a-real-run) · [How it compares](#how-it-compares) · [FAQ](#faq)
+
+Browse the skills on the web: [agentnumber10.com/tools/seo-agent-skills](https://agentnumber10.com/tools/seo-agent-skills)
+
+![AI visibility, a real run of the ai-visibility skill](assets/readme/ai-visibility-run.png)
+
+## Quick start
+
+1. **Install.** In Claude Code, run `/plugin marketplace add akootahq/seo-agent-skills`,
+   then `/plugin install seo-agent-skills@seo-agent-skills`. For Codex, Cursor
+   and other agents, see [Install](#install).
+2. **Optional: sign in to Agent Number 10** for AI answers and live data. In
+   Claude Code, run `/mcp`, choose `agentnumber10` and sign in. Every audit
+   and fix skill works without it.
+3. **Ask:** "Run an SEO audit of example.com".
+
+## Install
+
+| Agent | Command |
+| --- | --- |
+| Claude Code, as a plugin (adds the Agent Number 10 connection too) | `claude plugin marketplace add akootahq/seo-agent-skills`, then `claude plugin install seo-agent-skills@seo-agent-skills` |
+| Claude Code, skills only | `npx skills add akootahq/seo-agent-skills -a claude-code` |
+| Codex | `npx skills add akootahq/seo-agent-skills -a codex` |
+| Cursor | `npx skills add akootahq/seo-agent-skills -a cursor` |
+| Any other agent that reads `SKILL.md` files | `npx skills add akootahq/seo-agent-skills`, and choose your agent when asked |
+
+- **Inside a Claude Code session,** the plugin commands are
+  `/plugin marketplace add akootahq/seo-agent-skills` and
+  `/plugin install seo-agent-skills@seo-agent-skills`.
+- **The skills CLI** ([vercel-labs/skills](https://github.com/vercel-labs/skills))
+  needs Node.js 22.20 or later. It installs into the current project; add
+  `-g` to install for every project, `--skill seo-audit` for one skill, or
+  `--list` to see them all first. When an agent runs the command for you,
+  keep the `-a` flag, so the CLI installs for that agent without asking.
+- **Without the CLI,** copy the folders in `plugins/seo-agent-skills/skills/`
+  into your agent's skills folder: `.claude/skills/` for Claude Code,
+  `.agents/skills/` for Codex and Cursor.
+- **Update** with `npx skills update`. **Remove** with
+  `npx skills remove`, or `/plugin uninstall seo-agent-skills@seo-agent-skills`
+  in Claude Code.
+
+There is no Python or install script to run: the skills are text files your
+agent reads. Then ask in plain words:
+
+1. "Set up the brand file for example.com" (`brand-context`)
+2. "Run an SEO audit and an AEO audit" (`seo-audit`, `aeo-audit`)
+3. "Fix the high and medium findings and open a pull request" (`seo-fix`)
+4. After the merge and deploy: "Check the fixes are live" (`verify-fix`)
+
+## The skills
+
+| Skill | What it does | Needs |
+| --- | --- | --- |
+| `brand-context` | Writes one brand file the other skills read: domain, market, competitors, priority pages, buyer questions | Nothing |
+| `connect-data` | Connects one data source, with the setup for your agent, and checks it: Agent Number 10, DataForSEO, treg, Ahrefs, Bing Webmaster Tools, Google Analytics or a Search Console export | Nothing |
+| **Audit, fix, verify** | | |
+| `seo-audit` | Technical and on-page audit: indexing, redirects, titles, canonicals, sitemaps, structured data, local, e-commerce, hreflang, and Core Web Vitals with a free Google API key | Nothing |
+| `aeo-audit` | Can AI assistants read and quote you: AI crawler access, content without JavaScript, the brand as an entity, answer-ready pages, llms.txt | Nothing |
+| `page-check` | One page in depth, with a short fix list | Nothing |
+| `seo-fix` | Makes the fixes in your code, one commit each, and opens a pull request listing the check for every fix | Nothing |
+| `verify-fix` | Runs each fix's check on the live site and reports pass or fail with the evidence | Nothing |
+| **Focused audits** | | |
+| `technical-seo` | How search engines crawl and index the site: status codes, redirects, canonicals, noindex, robots.txt, sitemaps, soft 404s, duplicates | Nothing (a free Bing key adds Bing's crawl issues) |
+| `schema` | Structured data in JSON-LD, microdata and RDFa, checked against the page; new JSON-LD written only from facts the page shows | Nothing |
+| `site-architecture` | Click depth, orphan pages, hub pages, broken internal links, and the internal links to add | Nothing |
+| `images` | Alt text on content images (not pixels, spacers or decorative icons), sizes, formats, lazy loading and the LCP image | Nothing |
+| `international-seo` | hreflang both ways, language and region codes, `lang` that matches the text, country targeting; works in any language | Nothing |
+| **Content** | | |
+| `llms-txt` | Checks your /llms.txt, or writes one from the site's real pages | Nothing |
+| `content-refresh` | Pages that are out of date, and what needs a fresh source | Nothing (Search Console or Google Analytics puts the pages losing traffic first) |
+| `competitor-pages` | Honest "X vs Y" and "alternatives to X" pages, every competitor claim sourced and dated | Nothing |
+| `programmatic-seo` | Pages from a template and a dataset, without thin pages, duplicates or index bloat | Nothing |
+| **With real data** | | |
+| `ai-visibility` | Real answers from ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews: how often they name or cite you, by engine and by question | Agent Number 10 |
+| `ai-competitors` | Who the assistants name instead of you, ranked on the same answers | Agent Number 10 |
+| `prove-fix` | AI visibility before and after each fix went live | Agent Number 10 |
+| `search-console` | Your Google Search Console data: queries, pages losing clicks, quick wins, indexing; Bing's queries and Google Analytics visits beside them | Agent Number 10, or a free Search Console export (indexing needs Agent Number 10) |
+| `bing-webmaster` | Your Bing Webmaster Tools data: Bing queries and pages, crawl issues, URL checks, inbound links, and submitting changed URLs after you agree | A free Bing Webmaster Tools key |
+| `keyword-research` | Keyword ideas, volume and difficulty for your market, what you already rank for, grouped by page | Agent Number 10, or your own DataForSEO, treg or Ahrefs |
+| `content-brief` | A brief for one query from what ranks, what AI answers say and cite, and your gaps | Agent Number 10, or your own DataForSEO, treg or Ahrefs (AI answers need Agent Number 10) |
+| `backlinks` | Referring domains, new and lost links, the link gap against competitors, and broken backlinks to reclaim | Your own Ahrefs or DataForSEO, or a free Bing key for your own inbound links |
+| `local-seo` | Your business listing, Maps results across an area, and name, address and phone across the site | Agent Number 10, or your own DataForSEO or treg (some checks need nothing) |
+| `client-report` | A client-ready AEO and SEO report, shared as a link that opens without a login | Agent Number 10 |
+
+Every finding carries a `Passes when` line: the test that proves it is
+fixed. The audit writes it, the pull request repeats it, and `verify-fix`
+runs it.
+
+## Connect your data
+
+Most skills read your public pages and need nothing. No account? Start with
+the free rows: Bing Webmaster Tools, Google Analytics and a Search Console
+export. The data skills need a
+source, and you choose it. Ask your agent to "connect data": `connect-data`
+sets up one source with the exact steps for Claude Code, Codex or Cursor,
+and checks it. Each guide below has the same steps for you to follow by
+hand.
+
+| Source | What it gives | Cost to you | Skills that use it | Guide |
+| --- | --- | --- | --- | --- |
+| Agent Number 10 | Real answers from 5 AI engines, history, before and after readings, tracked keywords, Search Console with index checks, client report links | An Agent Number 10 account | Every data skill; the only source for `ai-visibility`, `ai-competitors`, `prove-fix` and `client-report` | [Agent Number 10](docs/connect/agent-number-10.md) |
+| DataForSEO | Keyword volume and difficulty, Google results, Google Maps, backlinks | Your own paid account | `keyword-research`, `content-brief`, `local-seo`, `backlinks` | [DataForSEO](docs/connect/dataforseo.md), new |
+| treg | The same DataForSEO keyword, results and Maps calls, from a prepaid treg balance | Your own paid account | `keyword-research`, `content-brief`, `local-seo` | [treg](docs/connect/treg.md), new |
+| Ahrefs | Keywords, what a domain ranks for, organic competitors, backlinks | Your own paid account | `keyword-research`, `content-brief`, `backlinks` | [Ahrefs](docs/connect/ahrefs.md), new |
+| Bing Webmaster Tools | Bing queries and pages, crawl issues, URL details, inbound links, URL submission | Free | `bing-webmaster`, `search-console`, `technical-seo`, `backlinks` | [Bing Webmaster Tools](docs/connect/bing-webmaster.md), new |
+| Google Analytics, through Google's MCP server | Organic visits and the landing pages they start on | Free | `search-console`, `content-refresh`, `client-report` | [Google Analytics](docs/connect/google-analytics.md), new |
+| Search Console export | Queries, pages and daily clicks, from a file you download | Free | `search-console`, `content-refresh` | [Search Console export](docs/connect/search-console-export.md), new |
+
+- You type your own keys into your own environment or agent settings, never
+  into the chat, and the skills never print them.
+- Skills that run a paid lookup on your account ask first, every time, and
+  say how many calls.
+- Google has no official MCP server for Search Console. Live Search Console
+  data and index checks come through Agent Number 10; the free path is an
+  export.
+- AI answers across engines, history, before and after readings, and client
+  report links need Agent Number 10.
+- Guides marked "new" are written from each provider's own documentation
+  and have not yet been run end to end with a real account. If a step does
+  not match what you see, open an issue.
 
 ## Features
 
@@ -40,6 +161,16 @@ after it.
 - **One brand file:** your market, competitors, priority pages and buyer
   questions, asked once and read by every skill.
 
+**With your own data sources**
+
+- **Bing Webmaster Tools,** free: Bing's queries and pages, crawl issues,
+  URL checks, inbound links, and changed URLs submitted to Bing when you
+  agree.
+- **Google Analytics,** free, through Google's own MCP server: organic visits
+  and the landing pages that lose them.
+- **Your own DataForSEO, treg or Ahrefs account:** keyword research, content
+  briefs, local search and backlinks on data you already pay for.
+
 **With an Agent Number 10 account**
 
 - **Real AI answers** from ChatGPT, Claude, Perplexity, Gemini and Google AI
@@ -47,28 +178,6 @@ after it.
 - **Who the assistants name instead of you,** ranked on the same answers.
 - **Before and after:** AI visibility from before a fix went live against
   after it, with a plain verdict when the change is within the usual range.
-
-**Works in** Claude Code (as a plugin), Codex, Cursor and other agents that
-read `SKILL.md` files.
-
-## Install
-
-With the skills CLI, for Claude Code, Codex, Cursor and other agents that read
-`SKILL.md` files:
-
-```sh
-npx skills add akootahq/seo-agent-skills
-```
-
-As a Claude Code plugin:
-
-```sh
-claude plugin marketplace add akootahq/seo-agent-skills
-claude plugin install seo-agent-skills@seo-agent-skills
-```
-
-Or copy the folders in `plugins/seo-agent-skills/skills/` into your agent's
-skills folder.
 
 ## A real run
 
@@ -102,9 +211,9 @@ report said so instead of guessing.
 
 ## AI visibility: see where you stand
 
-![AI visibility, a real run of the ai-visibility skill](assets/readme/ai-visibility-run.png)
+The screenshot at the top is this run.
 
-`ai-visibility` measures what ChatGPT, Perplexity, Gemini and Google AI Overviews actually answer about a site: the share that cite or name you, and who they name instead.
+`ai-visibility` measures what ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews actually answer about a site: the share that cite or name you, and who they name instead.
 
 **A real run.** We pointed it at *"best tool for meeting notes, 2026"* (ChatGPT, web search, US, 3 runs). ChatGPT cited **Fathom, Granola and Fireflies every run.** Notion, which ships a meeting-notes product, showed up in **1 of 3 runs**, and only via a **blog about Notion**; `notion.com` was cited **0 times**.
 
@@ -113,19 +222,6 @@ ChatGPT pulls from other people's pages, not Notion's. **AI visibility is won of
 ```sh
 /ai-visibility  yoursite.com
 ```
-
-## The skills
-
-| Skill | What it does | Needs |
-| --- | --- | --- |
-| `brand-context` | Writes one brand file the other skills read: domain, market, competitors, priority pages, buyer questions | Nothing |
-| `seo-audit` | Technical and on-page audit: indexing, redirects, titles, canonicals, sitemaps, structured data, local, e-commerce, hreflang, and Core Web Vitals with a free Google API key | Nothing |
-| `aeo-audit` | Can AI assistants read and quote you: AI crawler access, content without JavaScript, the brand as an entity, answer-ready pages, llms.txt | Nothing |
-| `seo-fix` | Makes the fixes in your code, one commit each, and opens a pull request listing the check for every fix | Nothing |
-| `verify-fix` | Runs each fix's check on the live site and reports pass or fail with the evidence | Nothing |
-| `ai-visibility` | Real answers from ChatGPT, Claude, Perplexity, Gemini and Google AI Overviews: how often they name or cite you, by engine and by question | Agent Number 10 |
-| `ai-competitors` | Who the assistants name instead of you, ranked on the same answers | Agent Number 10 |
-| `prove-fix` | AI visibility before and after each fix went live | Agent Number 10 |
 
 ## How a run goes
 
@@ -158,26 +254,26 @@ Many audits stop at a list of problems. These skills keep going:
 
 |  | **SEO Agent Skills** | Audit skills (claude-seo, geo-seo-claude, marketingskills) | Data apps (OpenSEO, GEO Optimizer) |
 | --- | --- | --- | --- |
-| Finds what to fix | **✅** | ✅ | ✅ |
-| Makes the fix | **✅ a pull request in your code** | Plans or drafts; you apply them | Reports; GEO Optimizer can write files |
-| Checks each fix on the live site | **✅ pass or fail, with evidence** | Not built in; claude-seo compares baselines | GEO Optimizer re-audits with history |
-| Real answers from AI engines | **✅ 5 engines, no keys of your own** | Only through paid add-ons, if at all | With your own API keys, or a hosted plan |
-| AI answers before and after a fix | **✅** | ❌ | History or trends, with your keys or plan |
-| Install | **Markdown only** | Markdown, or Python and a script | An app, or a Python CLI |
+| Finds what to fix | **Yes** | Yes | Yes |
+| Makes the fix | **Yes, a pull request in your code** | Plans or drafts; you apply them | Reports; GEO Optimizer can write files |
+| Checks each fix on the live site | **Yes, pass or fail, with evidence** | Not built in; claude-seo compares baselines | GEO Optimizer re-audits with history |
+| Real answers from AI engines | **Yes, 5 engines, no keys of your own** | Only through paid add-ons, if at all | With your own API keys, or a hosted plan |
+| AI answers before and after a fix | **Yes** | No | History or trends, with your keys or plan |
+| Install | **The skills CLI or a Claude Code plugin; no Python or install script** | The skills CLI, or Python and an install script | An app, or a Python CLI |
 
 <details>
 <summary><b>Full comparison: 8 projects, feature by feature</b></summary>
 
 |  | **SEO Agent Skills** | claude-seo | OpenSEO | GEO Optimizer | Ryze SEO MCP skills | marketingskills | Illyism seo-skills | geo-seo-claude |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| SEO audit | **✅** | ✅ 29 skills | ✅ site audit | AI readiness only | ✅ on your Search Console and GA4 data | ✅ | ✅ | GEO-first, SEO supported |
-| AI search (AEO/GEO) audit | **✅** | ✅ | ✅ from its AI answer data | ✅ 0 to 100 score | ✅ | ✅ | ✅ | ✅ |
-| Makes the fix | **✅ a pull request in your code** | Drafts fixes (schema, robots.txt, llms.txt) for you to apply; never edits the site | A report of changes to make | ✅ writes files (robots.txt, llms.txt, schema) | Not listed | Not listed | ✅ pull requests and diffs | Generates llms.txt; the rest as reports |
-| Checks the fix on the live site | **✅ pass or fail for each fix, with evidence** | Compares the live page with a saved baseline | Not listed | Re-audits, with history and drift | Not listed | Not listed | Verification commands in the pull request | Not listed |
-| Real answers from AI engines | **✅ 5 engines, no API keys of your own** | Through extensions, with your own paid accounts | ✅ hosted, or with your own data key | ✅ with your own API keys | Not listed (AI referral traffic from GA4) | Through partner tools, with their accounts | With your own data key | ❌ scores how quotable pages are |
-| AI answers before and after a fix | **✅** | ❌ its baseline covers page SEO | Trend over time | ✅ with your own API keys | ❌ | Not listed | Through a separate paid tracker | ❌ |
+| SEO audit | **Yes** | Yes, 35 skills | Yes, site audit | AI readiness only | Yes, on your Search Console and GA4 data | Yes | Yes | GEO-first, SEO supported |
+| AI search (AEO/GEO) audit | **Yes** | Yes | Yes, from its AI answer data | Yes, 0 to 100 score | Yes | Yes | Yes | Yes |
+| Makes the fix | **Yes, a pull request in your code** | Drafts fixes (schema, robots.txt, llms.txt) for you to apply; never edits the site | A report of changes to make | Yes, writes files (robots.txt, llms.txt, schema) | Not listed | Not listed | Yes, pull requests and diffs | Generates llms.txt; the rest as reports |
+| Checks the fix on the live site | **Yes, pass or fail for each fix, with evidence** | Compares the live page with a saved baseline | Not listed | Re-audits, with history and drift | Not listed | Not listed | Verification commands in the pull request | Not listed |
+| Real answers from AI engines | **Yes, 5 engines, no API keys of your own** | Through extensions, with your own paid accounts | Yes, hosted, or with your own data key | Yes, with your own API keys | Not listed (AI referral traffic from GA4) | Through partner tools, with their accounts | With your own data key | No, scores how quotable pages are |
+| AI answers before and after a fix | **Yes** | No, its baseline covers page SEO | Trend over time | Yes, with your own API keys | No | Not listed | Through a separate paid tracker | No |
 | Runs in | **Claude Code, Codex, Cursor and other SKILL.md agents** | Claude Code (plugin); other agents through its AGENTS.md | Its own app, plus MCP and agent plugins | Command line, MCP, web | Claude, through a plugin and MCP | Claude Code, Codex and agents via the skills CLI | Claude Code, Cursor, Codex and more | Claude Code |
-| Install | **Markdown only** | Python and an install script | Docker, or the hosted app | Python (uvx) | Plugin and a Ryze account | Markdown only | Markdown only | Python and an install script |
+| Install | **The skills CLI or a Claude Code plugin; no Python or install script** | Python and an install script | Docker, or the hosted app | Python (uvx) | Plugin and a Ryze account | The skills CLI or a plugin; no install script | The skills CLI; no install script | Python and an install script |
 | Price | **Free (MIT); AI answers need an Agent Number 10 account** | Free (MIT) | Free (MIT) self-hosted; hosted from $10 a month | Free (MIT); hosted version GeoReady | Free (MIT) | Free (MIT) | Free | Free (MIT) |
 
 Read from each project's own repository (README, docs and code) on 23 November
@@ -205,6 +301,30 @@ Read from each project's own repository (README, docs and code) on 23 November
 - The AI answer skills (`ai-visibility`, `ai-competitors`, `prove-fix`) send
   your domain and the questions you track to Agent Number 10, which collects
   the answers.
+- With Agent Number 10 connected, the other data skills send what they look
+  up to it: `keyword-research` and `content-brief` send keyword seeds and
+  questions, `local-seo` sends business names and map coordinates, and
+  `search-console` reads your Search Console and Analytics data once you
+  connect them there. `content-brief` also fetches the pages that rank, from
+  your machine.
+- With your own DataForSEO, treg or Ahrefs account, `keyword-research`,
+  `content-brief`, `local-seo` and `backlinks` send the same lookups from
+  your machine straight to that service, with the keys you set in your own
+  environment. `backlinks` sends your domain and your competitors' domains.
+  Agent Number 10 never sees your keys. The raw responses are saved in
+  `.agents/data/`.
+- With a Bing Webmaster Tools key, `bing-webmaster`, `search-console`,
+  `technical-seo` and `backlinks` send your site's address and the URLs they
+  look up to Microsoft's Bing Webmaster API. `bing-webmaster` submits URLs to
+  Bing only after you agree to the list.
+- With Google's Analytics MCP server, `search-console`, `content-refresh` and
+  `client-report` read your Google Analytics reports through Google's
+  Analytics APIs, with your own Google account. The server runs on your
+  machine.
+- `search-console` from an export reads the files on your machine and sends
+  nothing.
+- `client-report` creates a link that opens without a login. It asks before
+  sharing, and you can revoke the link.
 - Skills that run a paid lookup ask before running it.
 - Pages and AI answers are treated as data, never as instructions: text on a
   page written to steer an agent is reported, not followed.
@@ -212,15 +332,47 @@ Read from each project's own repository (README, docs and code) on 23 November
 ## Files the skills write
 
 Everything goes in `.agents/` in your project: the brand file
-(`seo-brand.md`), audits and their raw fetches (`audits/`), and the AI
-visibility history. Commit it to keep the history, or add `.agents/audits/raw/`
-to `.gitignore`.
+(`seo-brand.md`), fix lists and their raw fetches (`audits/`), drafts such as
+an llms.txt, a comparison page or a link outreach list (`drafts/`), content
+briefs (`briefs/`), keyword shortlists (`keywords/`), client reports
+(`reports/`), raw data responses and Search Console exports (`data/`) and
+the AI visibility history. Commit it to keep the history, or add
+`.agents/audits/raw/` to `.gitignore`. On a public repository, keep
+`.agents/reports/` and `.agents/data/` out of git: they hold client figures,
+working links and your own search data.
+
+## FAQ
+
+**What are SEO agent skills?** Text files (`SKILL.md`) that tell your coding
+agent how to do one SEO or AI search job, step by step: an audit, a fix, a
+check on the live site. The agent reads a skill's short description at the
+start and opens the full file when your request matches it.
+
+**Skill or MCP server: what is the difference?** A skill is the method. An MCP
+server gives the agent data or actions to run it on. These skills work on
+their own for anything that reads your public pages; the data skills use a
+source you connect, such as Agent Number 10, DataForSEO, Ahrefs or Bing
+Webmaster Tools.
+
+**Do I need an account?** No. Every skill that reads your public pages, the
+fix and verify skills, and the Search Console export path need nothing. AI
+answers across engines, history, before and after readings, and client report
+links need an Agent Number 10 account.
+
+**Which agents does it work with?** Claude Code, as a plugin or as skills,
+Codex, Cursor, and any other agent that reads `SKILL.md` files, through the
+skills CLI.
+
+**What does it cost?** The skills are free and MIT licensed. Free sources cost
+nothing. Paid sources bill your own account, and the skills ask before every
+paid lookup and say how many calls it will make.
 
 ## Contributing
 
 Issues and pull requests are welcome. [CONTRIBUTING.md](CONTRIBUTING.md) has
-the checks and the rules the skills keep; security reports go through
-[SECURITY.md](SECURITY.md).
+the checks and the rules the skills keep, and
+[tests/triggers.md](tests/triggers.md) lists the requests each skill must
+and must not answer; security reports go through [SECURITY.md](SECURITY.md).
 
 ## License
 

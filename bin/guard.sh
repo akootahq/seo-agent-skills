@@ -23,6 +23,14 @@ public_patterns=(
 	'\bCITE-[0-9]+\b'
 )
 
+# Names this repository may publish even though the private list covers them.
+# Users bring their own data tools, so the skills name the tools they connect.
+# Only these exact names are let through: every other match of a private
+# pattern still fails, including other spellings and hosts.
+allowed_names=(
+	'DataForSEO'
+)
+
 private_patterns=()
 private_source=''
 if [ -n "${GUARD_PATTERNS:-}" ]; then
@@ -60,6 +68,12 @@ check_text() {
 			failures=$((failures + 1))
 		done < <(printf '%s\n' "$text" | grep -Ein -e "$pattern" | cut -d: -f1 || true)
 	done
+	# Remove the allowed names, in any letter case, before the private patterns
+	# see the text, so a line that also holds something private still fails.
+	local private_text=$text allowed
+	for allowed in "${allowed_names[@]}"; do
+		private_text=$(printf '%s\n' "$private_text" | NAME="$allowed" perl -pe 's/\Q$ENV{NAME}\E//gi')
+	done
 	local i=0
 	for pattern in "${private_patterns[@]}"; do
 		i=$((i + 1))
@@ -67,7 +81,7 @@ check_text() {
 			[ -n "$n" ] || continue
 			echo "guard: $name:$n matches private pattern #$i" >&2
 			failures=$((failures + 1))
-		done < <(printf '%s\n' "$text" | grep -Ein -e "$pattern" | cut -d: -f1 || true)
+		done < <(printf '%s\n' "$private_text" | grep -Ein -e "$pattern" | cut -d: -f1 || true)
 	done
 }
 

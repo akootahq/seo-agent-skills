@@ -4,6 +4,65 @@ Each entry says what changed for the people using the skills. Versions follow
 semantic versioning; the skills stay at `0.x` while their files and outputs
 settle.
 
+## 0.2.0 (24 November 2026)
+
+- 18 new skills, 26 in all. Each audit writes the same fix list as
+  `seo-audit`, so `seo-fix` can apply it and `verify-fix` can check it.
+  - Focused audits: `technical-seo`, `schema`, `site-architecture`,
+    `images`, `international-seo` and `page-check`.
+  - Content: `llms-txt`, `content-refresh`, `competitor-pages` and
+    `programmatic-seo`. Drafts go in `.agents/drafts/`.
+  - With real data: `search-console`, `bing-webmaster`, `keyword-research`,
+    `content-brief`, `backlinks`, `local-seo` and `client-report`.
+  - `connect-data` connects one data source at a time, with the exact setup
+    for Claude Code, Codex and Cursor, checks that it works, and says how to
+    disconnect. You type your own keys into your own environment, never into
+    the chat.
+- Bring your own data: Bing Webmaster Tools (a free key), Google Analytics
+  through Google's own MCP server, and Ahrefs (its MCP server or an API key)
+  join DataForSEO, treg and the Search Console export. Each source has a
+  setup guide in `docs/connect/`.
+- Where the data comes from:
+  - The page-based skills read only public pages, from your machine.
+  - The data skills use Agent Number 10, or your own accounts:
+    DataForSEO or treg for `keyword-research`, `content-brief` and
+    `local-seo`; Ahrefs for `keyword-research`, `content-brief` and
+    `backlinks`; DataForSEO for `backlinks`. The skills ask before every
+    batch of calls on your account.
+  - `bing-webmaster` runs on a free Bing Webmaster Tools key, which also
+    adds Bing's queries to `search-console`, Bing's crawl issues to
+    `technical-seo` and your own inbound links to `backlinks`.
+  - `search-console` also works from a free Search Console export, and
+    reads organic visits from Google Analytics through Google's MCP server.
+  - AI answers, history and report links need Agent Number 10.
+- The README starts with a three-step quick start and one install line per
+  agent, then a table of every data source: what it gives, whether it is free
+  or your own paid account, and which skills use it. A FAQ closes it. The
+  directory listing is now named Agent Number 10 SEO Skills.
+- Every skill's description now says when another skill fits better, and
+  `tests/triggers.md` lists the requests each skill must answer and the ones
+  it must leave to its neighbours.
+- The audits no longer report problems that are not there:
+  - A page the site refuses to serve (403, 429, a bot challenge) is "could
+    not check", never the site's fault.
+  - A page whose content only appears after JavaScript is reported once, in
+    plain words, instead of being audited as an empty page.
+  - Structured data is found in JSON-LD, microdata and RDFa before a page is
+    said to have none.
+  - Tracking pixels, spacers and decorative icons are not counted as images
+    missing alt text.
+  - No check depends on English words.
+  - A link or image that answers a quick check (HEAD) with 404, 405 or 501
+    is fetched in full before it is called broken: some servers answer the
+    quick check with 404 for files that exist.
+  - A site with one language, or with no template pages, is reported as
+    such instead of getting findings that do not apply.
+- Every skill that saves pages creates its folder first. The first download
+  failed in a fresh project before.
+- Tested on a live site before release. That test removed rules that would
+  have flagged a logged-in app's robots.txt, a missing software rating the
+  page never shows, and link notes the llms.txt proposal makes optional.
+
 ## 0.1.3 (23 November 2026)
 
 - The plugin's listing links to its documentation page, where to get
