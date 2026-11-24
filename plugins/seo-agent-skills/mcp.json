@@ -1,9 +1,18 @@
 {
-  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
     "agentnumber10": {
       "type": "streamable-http",
-      "url": "https://app.agentnumber10.com/mcp"
+      "url": "https://app.agentnumber10.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "dcr"
+            }
+          }
+        }
+      }
     }
   }
 }

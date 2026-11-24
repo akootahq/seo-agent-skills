@@ -4,6 +4,16 @@ Each entry says what changed for the people using the skills. Versions follow
 semantic versioning; the skills stay at `0.x` while their files and outputs
 settle.
 
+## 0.2.4 (25 November 2026)
+
+- Ready for the ChatGPT and Codex plugin directory:
+  - The Agent Number 10 server declares its sign-in (OAuth, with the
+    client registered automatically).
+  - The listing has a support link, a subtitle within the 30-character
+    limit, a fuller description and the Business & Operations category.
+- Anyone who installed the Claude Code plugin under its old name,
+  `seo-agent-skills`, is moved to `an10-seo-skills` automatically.
+
 ## 0.2.3 (24 November 2026)
 
 - Codex plugin: `codex plugin marketplace add akootahq/seo-agent-skills`,
