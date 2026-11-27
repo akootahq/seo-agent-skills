@@ -1,6 +1,6 @@
 {
   "name": "an10-seo-skills",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "SEO and AI search (AEO/GEO) audits that end in a pull request, with each fix checked on the live site. Connect Agent Number 10 to see what the major AI assistants say about you, before and after.",
   "author": {
     "name": "Agent Number 10",
@@ -41,5 +41,63 @@
     "logo": "./.claude-plugin/icon.png",
     "supportURL": "https://github.com/akootahq/seo-agent-skills/issues"
   },
-  "mcpServers": "./mcp.json"
+  "mcpServers": "./mcp.json",
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "How often AI assistants name a tracked site",
+              "prompt": "How often do ChatGPT, Perplexity and the other AI assistants name notion.so in their answers?",
+              "tools_triggered": "list_sites, get_ai_visibility",
+              "expected_behavior": "Finds the notion.so project, then gives the share of AI answers that name or cite notion.so, overall and per engine, from its latest measurement, with the date it was measured."
+            },
+            {
+              "description": "Read the site's own pages",
+              "prompt": "Use Agent Number 10 to read notion.so's homepage and pricing page. How does Notion describe itself, and what plans does it sell?",
+              "tools_triggered": "list_sites, read_pages",
+              "expected_behavior": "Reads both pages through Agent Number 10 (a page the crawl did not cover is read live) and summarises how Notion describes itself and its plans with their prices."
+            },
+            {
+              "description": "Site audit and what to fix first",
+              "prompt": "Audit notion.so's SEO and tell me what to fix first.",
+              "tools_triggered": "list_sites, list_issues, get_fix_plan",
+              "expected_behavior": "Lists the open issues from the latest audit of notion.so, most important first, each with the affected page and the change that fixes it."
+            },
+            {
+              "description": "A site's headline numbers",
+              "prompt": "What are notion.so's headline numbers in Agent Number 10?",
+              "tools_triggered": "list_sites, get_site_overview",
+              "expected_behavior": "Gives the latest AEO score out of 100 and the AI visibility share of measured answers, each with the date it was measured."
+            },
+            {
+              "description": "Keyword ideas with search volume, a live lookup that asks first",
+              "prompt": "Find keyword ideas around 'team wiki software' in the United States, with monthly search volume.",
+              "tools_triggered": "find_keyword_ideas or measure_keywords",
+              "expected_behavior": "Says it will run one live lookup and asks to confirm before running it. After a yes, gives monthly search volume for the keyword and related terms."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Creative writing is out of scope",
+              "prompt": "Write a short poem about autumn.",
+              "expected_behavior": "The plugin is not used. The assistant answers on its own."
+            },
+            {
+              "description": "Debugging code is out of scope",
+              "prompt": "Why does my Python script raise a TypeError when I add a number to a string?",
+              "expected_behavior": "The plugin is not used. The assistant answers on its own."
+            },
+            {
+              "description": "Weather is out of scope",
+              "prompt": "What will the weather be in London tomorrow?",
+              "expected_behavior": "The plugin is not used. The assistant answers on its own or says it cannot check the weather."
+            }
+          ]
+        },
+        "demo_recording_url": "https://drive.google.com/file/d/1rOWzqX0UOvbqUJrC9mXrVFYG2Q0kGoMd/view"
+      }
+    }
+  }
 }
