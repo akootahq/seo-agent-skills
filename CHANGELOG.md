@@ -4,6 +4,12 @@ Each entry says what changed for the people using the skills. Versions follow
 semantic versioning; the skills stay at `0.x` while their files and outputs
 settle.
 
+## 0.2.5 (27 November 2026)
+
+- The ChatGPT and Codex plugin listing now carries its review details: five
+  test prompts the plugin should handle, three it should leave alone, and a
+  walkthrough video of the test prompts running against a demo account.
+
 ## 0.2.4 (25 November 2026)
 
 - Ready for the ChatGPT and Codex plugin directory:
